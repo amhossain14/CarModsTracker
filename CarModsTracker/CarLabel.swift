@@ -9,6 +9,30 @@
 
 import UIKit
 
-class CarLabel: NSObject {
+class CarLabel: UIViewController {
+    
+    let thisCar: Car
+    
+    let carName: String
+    
+   // let nameLabel: UILabel
+   // let carLabelPicture: UIImageView
+    
+    var screenSize: CGSize
 
+    init(_ car: Car) {
+        
+        thisCar = car
+        carName = thisCar.toString()
+        
+        screenSize = UIScreen.main.bounds.size
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
 }
