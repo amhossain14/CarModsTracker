@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06A172891FAE58CA00F35419 /* icon for project in Resources */ = {isa = PBXBuildFile; fileRef = 06A172881FAE58C900F35419 /* icon for project */; };
 		3420E9A61F8706DA00D802A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3420E9A51F8706DA00D802A3 /* AppDelegate.swift */; };
 		3420E9A81F8706DA00D802A3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3420E9A71F8706DA00D802A3 /* ViewController.swift */; };
 		3420E9AD1F8706DA00D802A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3420E9AC1F8706DA00D802A3 /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		06A172881FAE58C900F35419 /* icon for project */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "icon for project"; sourceTree = "<group>"; };
 		3420E9A21F8706DA00D802A3 /* CarModsTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarModsTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3420E9A51F8706DA00D802A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3420E9A71F8706DA00D802A3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -70,12 +72,13 @@
 				34BC8FA51FAE36B00081C38D /* linkedList.swift */,
 				3420E9A51F8706DA00D802A3 /* AppDelegate.swift */,
 				3420E9A71F8706DA00D802A3 /* ViewController.swift */,
-				34BC8FA91FAE36DE0081C38D /* Car.swift */,
-				34BC8FAB1FAE36ED0081C38D /* CarLabel.swift */,
 				34BC8FAF1FAE373F0081C38D /* AddCar.swift */,
 				34BC8FB11FAE37530081C38D /* AddMod.swift */,
 				34BC8FAD1FAE370B0081C38D /* CarView.swift */,
+				34BC8FA91FAE36DE0081C38D /* Car.swift */,
+				34BC8FAB1FAE36ED0081C38D /* CarLabel.swift */,
 				3420E9AC1F8706DA00D802A3 /* Assets.xcassets */,
+				06A172881FAE58C900F35419 /* icon for project */,
 				3420E9AE1F8706DA00D802A3 /* LaunchScreen.storyboard */,
 				3420E9B11F8706DA00D802A3 /* Info.plist */,
 			);
@@ -143,6 +146,7 @@
 			files = (
 				3420E9B01F8706DA00D802A3 /* LaunchScreen.storyboard in Resources */,
 				3420E9AD1F8706DA00D802A3 /* Assets.xcassets in Resources */,
+				06A172891FAE58CA00F35419 /* icon for project in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
