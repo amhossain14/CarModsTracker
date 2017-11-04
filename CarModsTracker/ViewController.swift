@@ -57,6 +57,7 @@ class ViewController: UIViewController {
     
 
     
+<<<<<<< HEAD
     // addbutton button Pressed method
     @objc func addbuttonbuttonPressed() {
         
@@ -71,6 +72,12 @@ class ViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+=======
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+>>>>>>> c53520b55c329ca5fc961d352c5d706918806be5
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -79,5 +86,38 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+<<<<<<< HEAD
+=======
+
+
+    
+    /*
+ let carA: Car
+ let carB: Car
+ 
+ let carList: linkedList<Car>
+ 
+ var testString: String
+ 
+ init() {
+ carA = Car("2005", "Acura", "TL")
+ carB = Car("2007", "Nissan", "Maxima")
+ carList = linkedList()
+ 
+ carList.append(value: carA)
+ carList.append(value: carB)
+ 
+ testString = carList.nodeAt(index: 1).value.toString()
+ super.init(nibName: nil, bundle: nil)
+ print(testString)
+ 
+ for node in carList {
+ 
+ testString = node.value.toString()
+ print(testString)
+ */
+ }
+    
+>>>>>>> c53520b55c329ca5fc961d352c5d706918806be5
 }
 
