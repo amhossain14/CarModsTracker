@@ -12,12 +12,12 @@ import UIKit
 
 class AddCarViewController: UIViewController {
 
-//        private let addbutton: UIButton
+//    private let addbutton: UIButton
 //    private var carAddTable: UITableView
     private var editButton: UIButton
 
     init() {
-<<<<<<< HEAD:CarModsTracker/AddCar.swift
+
         
         let screenSize: CGSize = UIScreen.main.bounds.size
         editButton = UIButton(type: UIButtonType.custom)
@@ -39,29 +39,14 @@ class AddCarViewController: UIViewController {
         editButton.setTitle("Edit", for: UIControlState.normal)
 //        editButton.addTarget(self, action: #selector(AddCar.editTable), for: UIControlEvents.touchUpInside)
         self.view.addSubview(editButton)
-        
-        
-        
-        
+    
     }
     
     // func for Edit Table
 //    @objc func editTable() {
 //        carAddTable.setEditing(!carAddTable.isEditing, animated: true)
 //    }
-    
-=======
-  
-        super.init(nibName: nil, bundle: nil)
-        
-        self.view.backgroundColor = UIColor.gray
-    }
-    
-    
-    
-    
 
->>>>>>> b36bf902f8f7240d29fdcca83c01fe0934308a2d:CarModsTracker/AddCarViewController.swift
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

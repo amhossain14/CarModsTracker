@@ -45,17 +45,16 @@ class ViewController: UIViewController {
        
         print("title label shown")
         
-<<<<<<< HEAD
         // navbackground Label using for background
-        navbackground.backgroundColor = UIColor.white
-        navbackground.frame = CGRect(x: centerX-280, y: centerY-350, width: 500, height: topOffset)
-        self.view.addSubview(navbackground)
-=======
+        navBackground.backgroundColor = UIColor.white
+        navBackground.frame = CGRect(x: centerX-280, y: centerY-350, width: 500, height: topOffset)
+        self.view.addSubview(navBackground)
+
         // navBackground Label used for background
         navBackground.backgroundColor = UIColor.white
         navBackground.frame = CGRect(x: centerX-280, y: centerY-350, width: 500, height: 45)
         self.view.addSubview(navBackground)
->>>>>>> b36bf902f8f7240d29fdcca83c01fe0934308a2d
+
         print("navbackground labed Showed")
         
         
