@@ -15,6 +15,7 @@ class Car: NSObject {
     public var make: String
     public var model: String
 
+    // Method @init() creates a car object with the parameters year, make, and model. Cars can be added to @linkedList
     init(_ y: String, _ m: String, _ mo: String) {
         
         year = y
@@ -23,6 +24,7 @@ class Car: NSObject {
         
     }
     
+    // Returns Year, Make, and Model in a string
     public func toString() -> String {
         
         let result: String = (year + " " + make + " " + model)

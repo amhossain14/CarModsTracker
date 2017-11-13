@@ -10,16 +10,18 @@
 
 import UIKit
 
-// this will be a different MVC  and it will have car name and models Years and others details
-class AddCar: UIViewController {
+class AddCarViewController: UIViewController {
 
     init() {
   
-
-        //Here's Super Init
         super.init(nibName: nil, bundle: nil)
         
+        self.view.backgroundColor = UIColor.gray
     }
+    
+    
+    
+    
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

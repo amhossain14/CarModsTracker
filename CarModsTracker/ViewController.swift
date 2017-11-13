@@ -11,15 +11,15 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    private let addbutton: UIButton
-    private let tittle: UILabel
-    private let navbackground: UILabel
+    private let addButton: UIButton
+    private let appName: UILabel
+    private let navBackground: UILabel
     init() {
     
         
-    addbutton = UIButton(type: UIButtonType.custom) // addbutton
-    tittle =  UILabel() // tittle label
-    navbackground = UILabel ()
+    addButton = UIButton(type: UIButtonType.custom) // addbutton
+    appName =  UILabel() // tittle label
+    navBackground = UILabel ()
         
         //Here's Super Init
         super.init(nibName: nil, bundle: nil)
@@ -28,40 +28,39 @@ class ViewController: UIViewController {
         let centerY: CGFloat = screenSize.height / 2
         
         // addbutton
-        addbutton.frame = CGRect(x: centerX+165, y: centerY-350, width: 40, height: 40)
-        addbutton.setImage(#imageLiteral(resourceName: "addbutton.png"), for: UIControlState.normal)
-        addbutton.addTarget(self, action: #selector(ViewController.addbuttonbuttonPressed), for: UIControlEvents.touchUpInside)
+        addButton.frame = CGRect(x: centerX+165, y: centerY-350, width: 40, height: 40)
+        addButton.setImage(#imageLiteral(resourceName: "addbutton.png"), for: UIControlState.normal)
+        addButton.addTarget(self, action: #selector(ViewController.addButtonPressed), for: UIControlEvents.touchUpInside)
       
-        self.view.addSubview(addbutton)
+        self.view.addSubview(addButton)
        
        
-        // tittle Label
-        tittle.text = "Car Mods Tracker"
-        tittle.textColor = UIColor.black
-        tittle.textAlignment = NSTextAlignment.center
-        tittle.frame = CGRect(x: centerX-210, y: centerY-350, width: 150, height: 40)
-        self.view.addSubview(tittle)
+        // title Label
+        appName.text = "Car Mods Tracker"
+        appName.textColor = UIColor.black
+        appName.textAlignment = NSTextAlignment.center
+        appName.frame = CGRect(x: centerX-210, y: centerY-350, width: 150, height: 40)
+        self.view.addSubview(appName)
        
-        print("tittle labed Showed")
+        print("title label shown")
         
-        // navbackground Label using for background
-        navbackground.backgroundColor = UIColor.white
-        navbackground.frame = CGRect(x: centerX-280, y: centerY-350, width: 500, height: 45)
-        self.view.addSubview(navbackground)
+        // navBackground Label used for background
+        navBackground.backgroundColor = UIColor.white
+        navBackground.frame = CGRect(x: centerX-280, y: centerY-350, width: 500, height: 45)
+        self.view.addSubview(navBackground)
         print("navbackground labed Showed")
         
         
-         self.view.bringSubview(toFront: addbutton)/// bring to the front
-         self.view.bringSubview(toFront: tittle)/// bring to the front
+         self.view.bringSubview(toFront: addButton)/// bring to the front
+         self.view.bringSubview(toFront: appName)/// bring to the front
 }
 
     // addbutton button Pressed method
-    @objc func addbuttonbuttonPressed() {
+    @objc func addButtonPressed() {
         
-        print("addbuttonbuttonPressed")
-        let svc: AddCar = AddCar()
-        svc.view.backgroundColor = UIColor.gray
-        self.present(svc, animated: true) { () -> Void in
+        print("addButtonPressed")
+        let acvc: AddCarViewController = AddCarViewController()
+        self.present(acvc, animated: true) { () -> Void in
             NSLog("AddCarViewController")
         }
     }
@@ -79,6 +78,8 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 }
+
+
 //<<<<<<< HEAD
 //=======
 //
