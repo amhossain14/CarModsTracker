@@ -26,6 +26,7 @@ class ViewController: UIViewController {
         let screenSize: CGSize = UIScreen.main.bounds.size
         let centerX: CGFloat = screenSize.width / 2
         let centerY: CGFloat = screenSize.height / 2
+        let topOffset: CGFloat = screenSize.height * 0.1
         
         // addbutton
         addbutton.frame = CGRect(x: centerX+165, y: centerY-350, width: 40, height: 40)
@@ -46,7 +47,7 @@ class ViewController: UIViewController {
         
         // navbackground Label using for background
         navbackground.backgroundColor = UIColor.white
-        navbackground.frame = CGRect(x: centerX-280, y: centerY-350, width: 500, height: 45)
+        navbackground.frame = CGRect(x: centerX-280, y: centerY-350, width: 500, height: topOffset)
         self.view.addSubview(navbackground)
         print("navbackground labed Showed")
         

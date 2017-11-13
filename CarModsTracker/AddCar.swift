@@ -14,14 +14,42 @@ import UIKit
 class AddCar: UIViewController {
 
 //        private let addbutton: UIButton
+//    private var carAddTable: UITableView
+    private var editButton: UIButton
+
     init() {
-  
+        
+        let screenSize: CGSize = UIScreen.main.bounds.size
+        editButton = UIButton(type: UIButtonType.custom)
+
+        
+//        carAddTable = UITableView(frame: CGRect(x: (screenSize.width, y: screenSize.height, width:300, height: 300),style:UITableViewStyle.plain))
 
         //Here's Super Init
         super.init(nibName: nil, bundle: nil)
         
+//        carAddTable.dataSource = self
+//        carAddTable.delegate = self
+        
+        
+        self.view.backgroundColor = UIColor(red: 0.83984375, green: 0.85546875, blue: 0.84375, alpha: 1.0)
+//        self.view.addSubview(carAddTable)
+        
+        editButton.frame = CGRect(x: UIScreen.main.bounds.width-90, y: 20, width: 90, height: 90)
+        editButton.setTitle("Edit", for: UIControlState.normal)
+//        editButton.addTarget(self, action: #selector(AddCar.editTable), for: UIControlEvents.touchUpInside)
+        self.view.addSubview(editButton)
+        
+        
+        
+        
     }
-
+    
+    // func for Edit Table
+//    @objc func editTable() {
+//        carAddTable.setEditing(!carAddTable.isEditing, animated: true)
+//    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
