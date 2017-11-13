@@ -10,14 +10,14 @@
 
 import UIKit
 
-// this will be a different MVC  and it will have car name and models Years and others details
-class AddCar: UIViewController {
+class AddCarViewController: UIViewController {
 
 //        private let addbutton: UIButton
 //    private var carAddTable: UITableView
     private var editButton: UIButton
 
     init() {
+<<<<<<< HEAD:CarModsTracker/AddCar.swift
         
         let screenSize: CGSize = UIScreen.main.bounds.size
         editButton = UIButton(type: UIButtonType.custom)
@@ -50,6 +50,18 @@ class AddCar: UIViewController {
 //        carAddTable.setEditing(!carAddTable.isEditing, animated: true)
 //    }
     
+=======
+  
+        super.init(nibName: nil, bundle: nil)
+        
+        self.view.backgroundColor = UIColor.gray
+    }
+    
+    
+    
+    
+
+>>>>>>> b36bf902f8f7240d29fdcca83c01fe0934308a2d:CarModsTracker/AddCarViewController.swift
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
