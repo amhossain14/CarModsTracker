@@ -10,7 +10,7 @@
 
 import UIKit
 
-<<<<<<< HEAD
+
 class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDelegate {
     //Label
     let labelYear : UILabel
@@ -32,18 +32,6 @@ class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         textYear = UITextField()
         textModel = UITextField()
         textMake = UITextField()
-=======
-class AddCarViewController: UIViewController {
-
-//    private let addbutton: UIButton
-//    private var carAddTable: UITableView
-    private var editButton: UIButton
-    
-    private let carCollection: linkedList<Car>
-
-    init() {
-        carCollection = linkedList()
->>>>>>> 7c3955906f87b9e68a4fc20bd77c4412c91ecde3
         
         let screenSize: CGSize = UIScreen.main.bounds.size
 //        let centerX: CGFloat = screenSize.width / 2
@@ -135,36 +123,11 @@ class AddCarViewController: UIViewController {
         textMake.delegate = self
         addCarScrollView.addSubview(textMake)
         
-        
-       
-        
-        
-        
-        
+
         self.view = addCarScrollView
 //        self.view.backgroundColor = UIColor(red: 0.83984375, green: 0.85546875, blue: 0.84375, alpha: 1.0)
     }
-    
-<<<<<<< HEAD
-    
-=======
-    // func for Edit Table
-//    @objc func editTable() {
-//        carAddTable.setEditing(!carAddTable.isEditing, animated: true)
-//    }
-    
-    // Adds entered information by user into the #carCollection
-    // Step 1: Pull in user information from 'this' to create a new Car object
-    // Step 2: Add car to #carCollection
-    public func addCarToCollection() {
-        var newCar: Car = Car("2005", "Acura", "TL") //temporary
-        
-        //code to get information from user
-        
-        carCollection.append(value: newCar)
-        
-    }
->>>>>>> 7c3955906f87b9e68a4fc20bd77c4412c91ecde3
+
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
