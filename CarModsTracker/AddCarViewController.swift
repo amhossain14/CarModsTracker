@@ -10,42 +10,129 @@
 
 import UIKit
 
-class AddCarViewController: UIViewController {
-
-//    private let addbutton: UIButton
-//    private var carAddTable: UITableView
-    private var editButton: UIButton
-
+class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDelegate {
+    //Label
+    let labelYear : UILabel
+    let labelModel : UILabel
+    let labelMake : UILabel
+    //TextField
+    let textYear: UITextField
+    let textModel:UITextField
+    let textMake:UITextField
+    
     init() {
 
+        // Label
+         labelYear = UILabel()
+         labelModel = UILabel()
+         labelMake = UILabel()
+        
+        // Text
+        textYear = UITextField()
+        textModel = UITextField()
+        textMake = UITextField()
         
         let screenSize: CGSize = UIScreen.main.bounds.size
-        editButton = UIButton(type: UIButtonType.custom)
-
+//        let centerX: CGFloat = screenSize.width / 2
+//        let centerY: CGFloat = screenSize.height / 2
         
-//        carAddTable = UITableView(frame: CGRect(x: (screenSize.width, y: screenSize.height, width:300, height: 300),style:UITableViewStyle.plain))
-
+        // This height and width are for Textbox and Label height is .05% of the screens and Width is 0.15%
+        let labelHeight: CGFloat = screenSize.height * 0.05
+        let labelWidth: CGFloat = screenSize.width * 1
+        
+        // For Center X and Y with 10%
+        let centerXWith10: CGFloat = (screenSize.width / 2)*0.01
+        let centerYWith10: CGFloat = (screenSize.height / 2)*0.01
+        
+        
         //Here's Super Init
         super.init(nibName: nil, bundle: nil)
         
-//        carAddTable.dataSource = self
-//        carAddTable.delegate = self
+        //this is for scrollView
+        let addCarScrollView: UIScrollView = UIScrollView() // this make sure its full screen
+        addCarScrollView.delegate = self
+        addCarScrollView.showsHorizontalScrollIndicator = false
+        addCarScrollView.showsVerticalScrollIndicator = true
+        addCarScrollView.contentSize = CGSize(width: screenSize.width, height: screenSize.height*1.5)
+        addCarScrollView.backgroundColor = UIColor.red
+        
+       // Label for Year
+        labelYear.text = "Year"
+        labelYear.backgroundColor = UIColor.white
+        labelYear.textColor = UIColor.black
+        labelYear.textAlignment = NSTextAlignment.center
+        labelYear.frame = CGRect(x: centerXWith10, y: (centerYWith10*5), width: labelWidth, height: labelHeight)
+        addCarScrollView.addSubview(labelYear)
+        
+        // TEXTFIELD for Year
+        textYear.frame = CGRect(x: centerXWith10, y: (centerYWith10*15), width: labelWidth, height: labelHeight)
+        textYear.textColor = UIColor.black
+        textYear.font = UIFont.systemFont(ofSize: 17.0)
+        textYear.textAlignment = NSTextAlignment.center
+        textYear.placeholder = " Enter Year "
+        textYear.backgroundColor = UIColor.white
+        textYear.borderStyle = UITextBorderStyle.bezel
+        textYear.keyboardType = UIKeyboardType.default
+        textYear.returnKeyType = UIReturnKeyType.done
+        textYear.clearButtonMode = UITextFieldViewMode.always
+        textYear.delegate = self
+        addCarScrollView.addSubview(textYear)
+        
+        // Label for MODEL
+        labelModel.text = "Model"
+        labelModel.backgroundColor = UIColor.white
+        labelModel.textColor = UIColor.black
+        labelModel.textAlignment = NSTextAlignment.center
+        labelModel.frame = CGRect(x: centerXWith10, y: (centerYWith10*25), width: labelWidth, height: labelHeight)
+        addCarScrollView.addSubview(labelModel)
+        
+        // TEXTFIELD for MODEL
+        textModel.frame = CGRect(x: centerXWith10, y: (centerYWith10*35), width: labelWidth, height: labelHeight)
+        textModel.textColor = UIColor.black
+        textModel.font = UIFont.systemFont(ofSize: 17.0)
+        textModel.textAlignment = NSTextAlignment.center
+        textModel.placeholder = " Enter Model "
+        textModel.backgroundColor = UIColor.white
+        textModel.borderStyle = UITextBorderStyle.bezel
+        textModel.keyboardType = UIKeyboardType.default
+        textModel.returnKeyType = UIReturnKeyType.done
+        textModel.clearButtonMode = UITextFieldViewMode.always
+        textModel.delegate = self
+        addCarScrollView.addSubview(textModel)
+        
+        // Label for MAKE
+        labelMake.text = "Make"
+        labelMake.backgroundColor = UIColor.white
+        labelMake.textColor = UIColor.black
+        labelMake.textAlignment = NSTextAlignment.center
+        labelMake.frame = CGRect(x: centerXWith10, y: (centerYWith10*45), width: labelWidth, height: labelHeight)
+        addCarScrollView.addSubview(labelMake)
+
+        // TEXTFIELD for MAKE
+        textMake.frame = CGRect(x: centerXWith10, y: (centerYWith10*55), width: labelWidth, height: labelHeight)
+        textMake.textColor = UIColor.black
+        textMake.font = UIFont.systemFont(ofSize: 17.0)
+        textMake.textAlignment = NSTextAlignment.center
+        textMake.placeholder = " Enter Make "
+        textMake.backgroundColor = UIColor.white
+        textMake.borderStyle = UITextBorderStyle.bezel
+        textMake.keyboardType = UIKeyboardType.default
+        textMake.returnKeyType = UIReturnKeyType.done
+        textMake.clearButtonMode = UITextFieldViewMode.always
+        textMake.delegate = self
+        addCarScrollView.addSubview(textMake)
         
         
-        self.view.backgroundColor = UIColor(red: 0.83984375, green: 0.85546875, blue: 0.84375, alpha: 1.0)
-//        self.view.addSubview(carAddTable)
+       
         
-        editButton.frame = CGRect(x: UIScreen.main.bounds.width-90, y: 20, width: 90, height: 90)
-        editButton.setTitle("Edit", for: UIControlState.normal)
-//        editButton.addTarget(self, action: #selector(AddCar.editTable), for: UIControlEvents.touchUpInside)
-        self.view.addSubview(editButton)
-    
+        
+        
+        
+        self.view = addCarScrollView
+//        self.view.backgroundColor = UIColor(red: 0.83984375, green: 0.85546875, blue: 0.84375, alpha: 1.0)
     }
     
-    // func for Edit Table
-//    @objc func editTable() {
-//        carAddTable.setEditing(!carAddTable.isEditing, animated: true)
-//    }
+    
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
