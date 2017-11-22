@@ -128,10 +128,6 @@ class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         self.view = addCarScrollView
 //        self.view.backgroundColor = UIColor(red: 0.83984375, green: 0.85546875, blue: 0.84375, alpha: 1.0)
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> 3ce5d5991e3e2e754e9dd9769220b96adac1622b
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
