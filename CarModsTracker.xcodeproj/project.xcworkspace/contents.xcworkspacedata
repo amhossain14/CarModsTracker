@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:CarModsTracker.xcodeproj">
+      location = "group:../CarModsTracker/2005acuratl.jpg">
+   </FileRef>
+   <FileRef
+      location = "group:../CarModsTracker/2006nissanmaxima.jpg">
+   </FileRef>
+   <FileRef
+      location = "self:">
    </FileRef>
 </Workspace>
