@@ -15,9 +15,11 @@ class AddCarViewController: UIViewController {
 //    private let addbutton: UIButton
 //    private var carAddTable: UITableView
     private var editButton: UIButton
+    
+    private let carCollection: linkedList<Car>
 
     init() {
-
+        carCollection = linkedList()
         
         let screenSize: CGSize = UIScreen.main.bounds.size
         editButton = UIButton(type: UIButtonType.custom)
@@ -46,6 +48,18 @@ class AddCarViewController: UIViewController {
 //    @objc func editTable() {
 //        carAddTable.setEditing(!carAddTable.isEditing, animated: true)
 //    }
+    
+    // Adds entered information by user into the #carCollection
+    // Step 1: Pull in user information from 'this' to create a new Car object
+    // Step 2: Add car to #carCollection
+    public func addCarToCollection() {
+        var newCar: Car = Car("2005", "Acura", "TL") //temporary
+        
+        //code to get information from user
+        
+        carCollection.append(value: newCar)
+        
+    }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
