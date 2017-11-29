@@ -89,7 +89,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         // navbackground Label using for background
         navBackground.backgroundColor = UIColor.white
         navBackground.frame = carConstraints
-        //self.view.addSubview(navBackground)
+//        self.view.addSubview(navBackground)
         
         //first car label
         car1.frame = CGRect(x: (carConstraints.width * 0.03), y: (carConstraints.width * 0.03), width: carLabelConstraints.width * 0.94, height: carLabelConstraints.height * 0.94)
