@@ -9,10 +9,11 @@
 
 import UIKit
 
-class CarView: UIViewController {
+class CarView: UIViewController, UIImagePickerControllerDelegate {
     
     private let imagePicker = UIImagePickerController()
     
+    private let imagePickButton: UIButton
     
     private let currentCar: Car
     private let currentCarName: String
@@ -27,7 +28,8 @@ class CarView: UIViewController {
         
         currentCar = CarToBeViewed
         currentCarName = currentCar.toString()
-        carImage = currentCar.coverPhoto
+        imagePickButton = UIButton()
+        carImage = UIImageView()
         
         let screenSize: CGSize = UIScreen.main.bounds.size
         let centerX: CGFloat = screenSize.width / 2
@@ -37,10 +39,21 @@ class CarView: UIViewController {
         let carConstraints = CGRect(x: 0, y: topOffset, width: screenSize.width, height: screenSize.height-topOffset)
         let carLabelConstraints = CGSize(width: screenSize.width, height: screenSize.width * (9/16))
         
-        super.init(nibName: nil, bundle: nil)
+        
+        
+     super.init(nibName: nil, bundle: nil)
+        //self.view.backgroundColor = UIColor.blue
+        
+        // add Picture Button
+        imagePickButton.frame = CGRect(x: centerX - 30 , y: screenSize.height * 0.9, width: 60 , height: 60)
+        imagePickButton.setTitle("addPicture", for: UIControlState.normal)
+        imagePickButton.backgroundColor = UIColor.red;
+        imagePickButton.addTarget(self, action: #selector(CarView.loadImageButtonTapped), for: UIControlEvents.touchUpInside)
+       // addCarScrollView.addSubview(addPicture)
         
         carImage.frame = CGRect(x: (carConstraints.width * 0.03), y: (carConstraints.width * 0.03), width: carLabelConstraints.width * 0.94, height: carLabelConstraints.height * 0.94)
         self.view.addSubview(carImage)
+        self.view.addSubview(imagePickButton)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -62,7 +75,7 @@ class CarView: UIViewController {
     
     // MARK: - UIImagePickerControllerDelegate Methods
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    private func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             carImage.contentMode = .scaleAspectFit
             carImage.image = pickedImage
@@ -71,7 +84,7 @@ class CarView: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+    private func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
 }

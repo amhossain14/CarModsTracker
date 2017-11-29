@@ -22,6 +22,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     private let car1: UIImageView
     private let car2: UIImageView
     
+    private let carView: CarView
     private let mainScrollView: UIScrollView
     
    // private let navConstraints: CGRect
@@ -34,6 +35,8 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         car1 = UIImageView()
         car2 = UIImageView()
         mainScrollView = UIScrollView()
+        
+        carView = CarView(CarToBeViewed: shanesCar)
         
         car1.image = UIImage(named: "2005acuratl")
         //car2.image = UIImage(named: "2006nissanmaxima")
@@ -75,7 +78,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
       
         self.view.addSubview(addButton)
        
-        //
+        
        
         // title Label
         appName.text = "Car Mods Tracker"
@@ -93,12 +96,21 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         
         //first car label
         car1.frame = CGRect(x: (carConstraints.width * 0.03), y: (carConstraints.width * 0.03), width: carLabelConstraints.width * 0.94, height: carLabelConstraints.height * 0.94)
+        car1.isUserInteractionEnabled = true
+        car1.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.handleTapPurple(_:))))
+        //car1.(self, action: #selector(ViewController.carPressed), for: UIControlEvents.touchUpInside)
         mainScrollView.addSubview(car1)
+        
 
          self.view.bringSubview(toFront: addButton)/// bring to the front
          self.view.bringSubview(toFront: appName)/// bring to the front
-}
-
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // addbutton button Pressed method
     @objc func addButtonPressed() {
         
@@ -108,19 +120,17 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             NSLog("AddCarViewController")
         }
     }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    
+    @objc func handleTapPurple(_ recognizer: UITapGestureRecognizer) {
+        
+        let cv: CarView
+        cv = CarView(CarToBeViewed: shanesCar)
+        
+        self.present(cv, animated: true) { () -> Void in
+            NSLog("CarViewController")
+        
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
 }
 
 
@@ -159,3 +169,4 @@ class ViewController: UIViewController, UIScrollViewDelegate {
 //>>>>>>> c53520b55c329ca5fc961d352c5d706918806be5
 //}
 
+}
