@@ -20,7 +20,9 @@ class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
     let labelVin: UILabel
     let labelTransmission : UILabel
     let labelPlate : UILabel
-
+    let labelengine : UILabel
+    let labelDrivetrain : UILabel
+    
     //TextField
     let textYear: UITextField
     let textModel:UITextField
@@ -28,6 +30,8 @@ class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
     let textVin: UITextField
     let textTransmission : UITextField
     let textPlate : UITextField
+    let textengine : UITextField
+    let textDrivetrain : UITextField
     
     // Button
     let doneButton: UIButton
@@ -44,7 +48,8 @@ class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         labelVin = UILabel()
         labelTransmission = UILabel()
         labelPlate = UILabel()
-        
+        labelengine = UILabel()
+        labelDrivetrain = UILabel()
         
         // Texts
         textYear = UITextField()
@@ -53,6 +58,8 @@ class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         textVin = UITextField()
         textTransmission = UITextField()
         textPlate = UITextField()
+        textengine = UITextField()
+        textDrivetrain = UITextField()
         
         // Buttons
         doneButton = UIButton(type: UIButtonType.custom)
@@ -63,9 +70,9 @@ class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         let centerX: CGFloat = screenSize.width / 2
         let centerY: CGFloat = screenSize.height / 2
         
-        // This height and width are for Textbox and Label height is .05% of the screens and Width is 0.15%
+        // This height and width are for Textbox and Label height is .05% of the screens
         let labelHeight: CGFloat = screenSize.height * 0.05
-        let labelWidth: CGFloat = screenSize.width * 1
+//        let labelWidth: CGFloat = screenSize.width * 1
         
         // For Center X and Y with 10%
         let centerXWith10: CGFloat = centerX * 0.01
@@ -91,15 +98,15 @@ class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         labelYear.font = UIFont.boldSystemFont(ofSize: 20.0)
         labelYear.textColor = UIColor.black
         labelYear.textAlignment = NSTextAlignment.center
-        labelYear.frame = CGRect(x: centerXWith10, y: (centerYWith10*5), width: labelWidth, height: labelHeight)
+        labelYear.frame = CGRect(x: centerXWith10, y: (centerYWith10*5), width: centerX * 2, height: labelHeight)
         addCarScrollView.addSubview(labelYear)
         
         // TEXTFIELD for Year
-        textYear.frame = CGRect(x: centerXWith10, y: (centerYWith10*15), width: labelWidth, height: labelHeight)
+        textYear.frame = CGRect(x: centerXWith10, y: (centerYWith10*15), width: centerX * 2, height: labelHeight)
         textYear.textColor = UIColor.black
         textYear.font = UIFont.systemFont(ofSize: 17.0)
         textYear.textAlignment = NSTextAlignment.center
-        textYear.placeholder = " Enter Year "
+        textYear.placeholder = "Enter Year"
         textYear.backgroundColor = UIColor.white
         textYear.borderStyle = UITextBorderStyle.bezel
         textYear.keyboardType = UIKeyboardType.default
@@ -114,15 +121,15 @@ class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         labelModel.font = UIFont.boldSystemFont(ofSize: 20.0)
         labelModel.textColor = UIColor.black
         labelModel.textAlignment = NSTextAlignment.center
-        labelModel.frame = CGRect(x: centerXWith10, y: (centerYWith10*25), width: labelWidth, height: labelHeight)
+        labelModel.frame = CGRect(x: centerXWith10, y: (centerYWith10*25), width: centerX * 2, height: labelHeight)
         addCarScrollView.addSubview(labelModel)
         
         // TEXTFIELD for MODEL
-        textModel.frame = CGRect(x: centerXWith10, y: (centerYWith10*35), width: labelWidth, height: labelHeight)
+        textModel.frame = CGRect(x: centerXWith10, y: (centerYWith10*35), width: centerX * 2, height: labelHeight)
         textModel.textColor = UIColor.black
         textModel.font = UIFont.systemFont(ofSize: 17.0)
         textModel.textAlignment = NSTextAlignment.center
-        textModel.placeholder = " Enter Model "
+        textModel.placeholder = "Enter Model"
         textModel.backgroundColor = UIColor.white
         textModel.borderStyle = UITextBorderStyle.bezel
         textModel.keyboardType = UIKeyboardType.default
@@ -137,15 +144,15 @@ class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         labelMake.font = UIFont.boldSystemFont(ofSize: 20.0)
         labelMake.textColor = UIColor.black
         labelMake.textAlignment = NSTextAlignment.center
-        labelMake.frame = CGRect(x: centerXWith10, y: (centerYWith10*45), width: labelWidth, height: labelHeight)
+        labelMake.frame = CGRect(x: centerXWith10, y: (centerYWith10*45), width: centerX * 2, height: labelHeight)
         addCarScrollView.addSubview(labelMake)
 
         // TEXTFIELD for MAKE
-        textMake.frame = CGRect(x: centerXWith10, y: (centerYWith10*55), width: labelWidth, height: labelHeight)
+        textMake.frame = CGRect(x: centerXWith10, y: (centerYWith10*55), width: centerX * 2, height: labelHeight)
         textMake.textColor = UIColor.black
         textMake.font = UIFont.systemFont(ofSize: 17.0)
         textMake.textAlignment = NSTextAlignment.center
-        textMake.placeholder = " Enter Make "
+        textMake.placeholder = "Enter Make"
         textMake.backgroundColor = UIColor.white
         textMake.borderStyle = UITextBorderStyle.bezel
         textMake.keyboardType = UIKeyboardType.default
@@ -160,16 +167,16 @@ class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         labelVin.font = UIFont.boldSystemFont(ofSize: 20.0)
         labelVin.textColor = UIColor.black
         labelVin.textAlignment = NSTextAlignment.center
-        labelVin.frame = CGRect(x: centerXWith10, y: (centerYWith10*65), width: labelWidth, height: labelHeight)
+        labelVin.frame = CGRect(x: centerXWith10, y: (centerYWith10*65), width: centerX * 2, height: labelHeight)
         addCarScrollView.addSubview(labelVin)
         
         
         //textVin
-        textVin.frame = CGRect(x: centerXWith10, y: (centerYWith10*75), width: labelWidth, height: labelHeight)
+        textVin.frame = CGRect(x: centerXWith10, y: (centerYWith10*75), width: centerX * 2, height: labelHeight)
         textVin.textColor = UIColor.black
         textVin.font = UIFont.systemFont(ofSize: 17.0)
         textVin.textAlignment = NSTextAlignment.center
-        textVin.placeholder = " Enter Vin Number "
+        textVin.placeholder = "Enter Vin Number "
         textVin.backgroundColor = UIColor.white
         textVin.borderStyle = UITextBorderStyle.bezel
         textVin.keyboardType = UIKeyboardType.default
@@ -185,15 +192,15 @@ class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         labelTransmission.font = UIFont.boldSystemFont(ofSize: 20.0)
         labelTransmission.textColor = UIColor.black
         labelTransmission.textAlignment = NSTextAlignment.center
-        labelTransmission.frame = CGRect(x: centerXWith10, y: (centerYWith10*85), width: labelWidth, height: labelHeight)
+        labelTransmission.frame = CGRect(x: centerXWith10, y: (centerYWith10*85), width: centerX * 2, height: labelHeight)
         addCarScrollView.addSubview(labelTransmission)
         
         //textTransmission
-        textTransmission.frame = CGRect(x: centerXWith10, y: (centerYWith10*95), width: labelWidth, height: labelHeight)
+        textTransmission.frame = CGRect(x: centerXWith10, y: (centerYWith10*95), width: centerX * 2, height: labelHeight)
         textTransmission.textColor = UIColor.black
         textTransmission.font = UIFont.systemFont(ofSize: 17.0)
         textTransmission.textAlignment = NSTextAlignment.center
-        textTransmission.placeholder = " Enter Transmission "
+        textTransmission.placeholder = "Enter Transmission "
         textTransmission.backgroundColor = UIColor.white
         textTransmission.borderStyle = UITextBorderStyle.bezel
         textTransmission.keyboardType = UIKeyboardType.default
@@ -209,16 +216,16 @@ class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         labelPlate.font = UIFont.boldSystemFont(ofSize: 20.0)
         labelPlate.textColor = UIColor.black
         labelPlate.textAlignment = NSTextAlignment.center
-        labelPlate.frame = CGRect(x: centerXWith10, y: (centerYWith10*105), width: labelWidth, height: labelHeight)
+        labelPlate.frame = CGRect(x: centerXWith10, y: (centerYWith10*105), width: centerX * 2, height: labelHeight)
         addCarScrollView.addSubview(labelPlate)
         
         
         //textPlate
-        textPlate.frame = CGRect(x: centerXWith10, y: (centerYWith10*115), width: labelWidth, height: labelHeight)
+        textPlate.frame = CGRect(x: centerXWith10, y: (centerYWith10*115), width: centerX * 2, height: labelHeight)
         textPlate.textColor = UIColor.black
         textPlate.font = UIFont.systemFont(ofSize: 17.0)
         textPlate.textAlignment = NSTextAlignment.center
-        textPlate.placeholder = " Enter Plate Number "
+        textPlate.placeholder = "Enter Plate Number "
         textPlate.backgroundColor = UIColor.white
         textPlate.borderStyle = UITextBorderStyle.bezel
         textPlate.keyboardType = UIKeyboardType.default
@@ -227,35 +234,87 @@ class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         textPlate.delegate = self
         addCarScrollView.addSubview(textPlate)
         
+        //labelengine
+        labelengine.text = "Engine"
+        labelengine.backgroundColor = UIColor.white
+        labelengine.font = UIFont.boldSystemFont(ofSize: 20.0)
+        labelengine.textColor = UIColor.black
+        labelengine.textAlignment = NSTextAlignment.center
+        labelengine.frame = CGRect(x: centerXWith10, y: (centerYWith10*125), width: centerX * 2, height: labelHeight)
+        addCarScrollView.addSubview(labelengine)
+        
+        
+        //textengine
+        textengine.frame = CGRect(x: centerXWith10, y: (centerYWith10*135), width: centerX * 2, height: labelHeight)
+        textengine.textColor = UIColor.black
+        textengine.font = UIFont.systemFont(ofSize: 17.0)
+        textengine.textAlignment = NSTextAlignment.center
+        textengine.placeholder = "Enter Engine type"
+        textengine.backgroundColor = UIColor.white
+        textengine.borderStyle = UITextBorderStyle.bezel
+        textengine.keyboardType = UIKeyboardType.default
+        textengine.returnKeyType = UIReturnKeyType.done
+        textengine.clearButtonMode = UITextFieldViewMode.always
+        textengine.delegate = self
+        addCarScrollView.addSubview(textengine)
+        
+        //label Drivetrain
+        labelDrivetrain.text = "Drivetrain"
+        labelDrivetrain.backgroundColor = UIColor.white
+        labelDrivetrain.font = UIFont.boldSystemFont(ofSize: 20.0)
+        labelDrivetrain.textColor = UIColor.black
+        labelDrivetrain.textAlignment = NSTextAlignment.center
+        labelDrivetrain.frame = CGRect(x: centerXWith10, y: (centerYWith10*145), width: centerX * 2, height: labelHeight)
+        addCarScrollView.addSubview(labelDrivetrain)
+        
+        
+        //TextDrivetrain
+        textDrivetrain.frame = CGRect(x: centerXWith10, y: (centerYWith10*155), width: centerX * 2, height: labelHeight)
+        textDrivetrain.textColor = UIColor.black
+        textDrivetrain.font = UIFont.systemFont(ofSize: 17.0)
+        textDrivetrain.textAlignment = NSTextAlignment.center
+        textDrivetrain.placeholder = "Enter Drivetrain type"
+        textDrivetrain.backgroundColor = UIColor.white
+        textDrivetrain.borderStyle = UITextBorderStyle.bezel
+        textDrivetrain.keyboardType = UIKeyboardType.default
+        textDrivetrain.returnKeyType = UIReturnKeyType.done
+        textDrivetrain.clearButtonMode = UITextFieldViewMode.always
+        textDrivetrain.delegate = self
+        addCarScrollView.addSubview(textDrivetrain)
+        
 
         // Done Button
-        doneButton.frame = CGRect(x: centerXWith10, y: screenSize.height * 0.9, width: bottomOffset * 0.5, height: bottomOffset * 0.5)
-        doneButton.setImage(#imageLiteral(resourceName: "addbutton.png"), for: UIControlState.normal)
-        doneButton.backgroundColor = UIColor.red;
-//        doneButton.setTitle("Done", for: UIControlState.normal)
+        doneButton.frame = CGRect(x: centerXWith10, y: screenSize.height * 0.9, width: (bottomOffset * 0.5) * 2 , height: bottomOffset * 0.5)
+//        doneButton.setImage(#imageLiteral(resourceName: "addbutton.png"), for: UIControlState.normal)
+        doneButton.backgroundColor = UIColor.blue;
+        doneButton.setTitle("Done", for: UIControlState.normal)
         doneButton.addTarget(self, action: #selector(AddCarViewController.doneButtonPressed), for: UIControlEvents.touchUpInside)
         addCarScrollView.addSubview(doneButton)
         
+        // add Picture Button
+        addPicture.frame = CGRect(x: (bottomOffset * 0.5) * 3.4 + (centerXWith10 ) , y: screenSize.height * 0.9, width: (bottomOffset * 0.5) * 3.5, height: bottomOffset * 0.5)
+        addPicture.setTitle("Add Picture", for: UIControlState.normal)
+        addPicture.backgroundColor = UIColor.blue;
+        addPicture.addTarget(self, action: #selector(AddCarViewController.addPictureButtonPressed), for: UIControlEvents.touchUpInside)
+        addCarScrollView.addSubview(addPicture)
+        
         // Cancel Button
-        cancelButton.frame = CGRect(x: centerX + 145, y: screenSize.height * 0.9, width: 20 + bottomOffset * 0.5, height: bottomOffset * 0.5)
+        cancelButton.frame = CGRect(x: centerX * 1.6 , y: screenSize.height * 0.9, width: (bottomOffset * 0.5) * 2, height: bottomOffset * 0.5)
         cancelButton.setTitle("Cancel", for: UIControlState.normal)
         cancelButton.backgroundColor = UIColor.blue;
         cancelButton.addTarget(self, action: #selector(AddCarViewController.cancelButtonPressed), for: UIControlEvents.touchUpInside)
         addCarScrollView.addSubview(cancelButton)
         
         
-        // add Picture Button
-        addPicture.frame = CGRect(x: centerX - 30 , y: screenSize.height * 0.9, width: 60 + bottomOffset * 0.5, height: bottomOffset * 0.5)
-        addPicture.setTitle("addPicture", for: UIControlState.normal)
-        addPicture.backgroundColor = UIColor.blue;
-        addPicture.addTarget(self, action: #selector(AddCarViewController.addPictureButtonPressed), for: UIControlEvents.touchUpInside)
-        addCarScrollView.addSubview(addPicture)
+
         
 //        self.view.bringSubview(toFront: doneButton)/// bring to the front
 //        self.view.bringSubview(toFront: cancelButton)/// bring to the front
         self.view = addCarScrollView
-//        self.view.backgroundColor = UIColor(red: 0.83984375, green: 0.85546875, blue: 0.84375, alpha: 1.0)
+        self.view.backgroundColor = UIColor(red: 0.83984375, green: 0.85546875, blue: 0.84375, alpha: 1.0)
    
+        
+        
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -295,4 +354,21 @@ class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
 
     }
     
+    
+    // this Func is for Textfield
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textYear == textField {
+            textVin.text = textYear.text
+            if textYear.text == "Hide" {
+                textYear.resignFirstResponder()   // hide keyboard
+                textYear.isHidden = true          // hide textfield
+
+                // or remove it from subview
+            }
+
+
+        }
+        return true
+    }
+
 }
