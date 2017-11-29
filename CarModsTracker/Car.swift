@@ -9,9 +9,7 @@
 
 import UIKit
 
-class Car: UIViewController, UIImagePickerControllerDelegate {
-    
-    private let imagePicker: UIImagePickerController
+class Car: NSObject {
     
     public var year: String
     public var make: String
@@ -32,15 +30,8 @@ class Car: UIViewController, UIImagePickerControllerDelegate {
         transmission = trans
         plate = plt
         coverPhoto = UIImageView()
-        imagePicker = UIImagePickerController()
-        imagePicker.allowsEditing = false
-        imagePicker.sourceType = .photoLibrary
-        super.init(nibName: nil, bundle: nil)
-        self.present(imagePicker, animated: true, completion: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init()
+        
     }
     
     // Returns Year, Make, and Model in a string
@@ -51,33 +42,6 @@ class Car: UIViewController, UIImagePickerControllerDelegate {
         return result
         
     }
-    
-    @IBAction func loadImageButtonTapped(sender: UIButton) {
-        imagePicker.allowsEditing = false
-        imagePicker.sourceType = .photoLibrary
-        
-        self.present(imagePicker, animated: true, completion: nil)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        imagePicker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
-    }
-    
-    // MARK: - UIImagePickerControllerDelegate Methods
-    
-    private func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            coverPhoto.contentMode = .scaleAspectFit
-            coverPhoto.image = pickedImage
-        }
-        
-        dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
-    }
+   
     
 }
