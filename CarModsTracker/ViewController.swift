@@ -68,7 +68,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         mainScrollView.showsVerticalScrollIndicator = true
         mainScrollView.frame = carConstraints
         mainScrollView.contentSize = CGSize(width: screenSize.width, height: screenSize.height * 2)
-        mainScrollView.backgroundColor = UIColor.blue
+        mainScrollView.backgroundColor = UIColor.lightGray
         self.view.addSubview(mainScrollView)
         
         // addbutton
