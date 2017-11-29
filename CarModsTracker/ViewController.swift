@@ -17,7 +17,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     private let garage: linkedList<Car>
     private let shanesCar: Car
-    private let amirsCar: Car
+   // private let amirsCar: Car
     
     private let car1: UIImageView
     private let car2: UIImageView
@@ -28,19 +28,19 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     init() {
         
-        shanesCar = Car("2005", "Acura", "TL")
-        amirsCar = Car("2006", "Nissan", "Maxima")
+        shanesCar = Car("2005", "ACURA", "TL", "3.2L V6 SOHC i-VTEC", "6-speed Manual", "123456")
+        //amirsCar = Car("2006", "Nissan", "Maxima")
         
         car1 = UIImageView()
         car2 = UIImageView()
         mainScrollView = UIScrollView()
         
         car1.image = UIImage(named: "2005acuratl")
-        car2.image = UIImage(named: "2006nissanmaxima")
+        //car2.image = UIImage(named: "2006nissanmaxima")
         
         garage = linkedList()
         
-        garage.append(value: amirsCar)
+        //garage.append(value: amirsCar)
         garage.append(value: shanesCar)
         
         addButton = UIButton(type: UIButtonType.custom) // addbutton
