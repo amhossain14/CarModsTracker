@@ -82,6 +82,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
        
         // title Label
         appName.text = "Car Mods Tracker"
+        appName.font = UIFont.boldSystemFont(ofSize: 20.0)
         appName.textColor = UIColor.black
         appName.textAlignment = NSTextAlignment.left
         appName.frame = CGRect(x: topLeftTitleOffset, y: topLeftTitleOffset, width: centerX, height: topOffset)
@@ -134,7 +135,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
 }
 
 
-//<<<<<<< HEAD
+
 //=======
 //
 //
@@ -166,7 +167,6 @@ class ViewController: UIViewController, UIScrollViewDelegate {
 // */
 // }
 //
-//>>>>>>> c53520b55c329ca5fc961d352c5d706918806be5
 //}
 
 }

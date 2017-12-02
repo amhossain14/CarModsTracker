@@ -11,8 +11,11 @@
 import UIKit
 
 
-class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDelegate {
+class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
 
+    // this is test
+     var carPicture:UIImageView
+    
     //Label
     let labelYear: UILabel
     let labelModel : UILabel
@@ -40,6 +43,10 @@ class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
     
     
     init() {
+        // this is test
+             carPicture = UIImageView()
+        
+        
         
         // Labels
         labelYear = UILabel()
@@ -89,7 +96,7 @@ class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         addCarScrollView.delegate = self
         addCarScrollView.showsHorizontalScrollIndicator = false
         addCarScrollView.showsVerticalScrollIndicator = true
-        addCarScrollView.contentSize = CGSize(width: screenSize.width, height: screenSize.height*1.5)
+        addCarScrollView.contentSize = CGSize(width: screenSize.width, height: screenSize.height*1.0001)
         addCarScrollView.backgroundColor = UIColor.red
         
        // Label for Year
@@ -308,6 +315,14 @@ class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         
 
         
+        carPicture.backgroundColor = UIColor.yellow
+        //        pic.image = UIImage(named: "play.png")
+        //        self.view.addSubview(play) // to add on the screen
+        carPicture.frame = CGRect(x: centerXWith10, y: (centerYWith10*165), width: centerX * 2, height: labelHeight)
+        
+        addCarScrollView.addSubview(carPicture)
+        
+        
 //        self.view.bringSubview(toFront: doneButton)/// bring to the front
 //        self.view.bringSubview(toFront: cancelButton)/// bring to the front
         self.view = addCarScrollView
@@ -332,15 +347,23 @@ class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
     // Done button button Pressed method
     @objc func doneButtonPressed() {
         
-        print("Done ButtonPressed")
-
+        
+                if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary) {
+                    let imagePicker = UIImagePickerController()
+                    imagePicker.delegate = self
+                    imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+                    imagePicker.allowsEditing = true
+                    self.present(imagePicker, animated: true, completion: nil)
+                }
+        
+        print("DONE Button Pressed")
         
     }
     
     // Cancel button button Pressed method
     @objc func cancelButtonPressed() {
         
-        print("Cancel ButtonPressed")
+        print("CANCEL ButtonPressed")
         let vc: ViewController = ViewController()
         self.present(vc, animated: true) { () -> Void in
             NSLog("Back to main Screen VC")
@@ -349,26 +372,64 @@ class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
     
     // Add picture button button Pressed method
     @objc func addPictureButtonPressed() {
+
         
-        print("add Picture Button Pressed ")
+
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+            imagePicker.allowsEditing = false
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+        
+        print("ADD Picture Button Pressesd ")
 
     }
     
     
+    // this is a TEST
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            carPicture.contentMode = .scaleToFill
+            carPicture.image = pickedImage
+        }
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
     // this Func is for Textfield
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("TEXT field for ")// textYear
         if textYear == textField {
-            textVin.text = textYear.text
+//            textVin.text = textYear.text
             if textYear.text == "Hide" {
                 textYear.resignFirstResponder()   // hide keyboard
                 textYear.isHidden = true          // hide textfield
 
                 // or remove it from subview
             }
+        }
+        // this textModel
+        if textModel == textField {
+//            textPlate.text = textModel.text
+            if textModel.text == "Hide" {
+                textModel.resignFirstResponder()   // hide keyboard
+                textModel.isHidden = true          // hide textfield
 
-
+                // or remove it from subview
+            }
         }
         return true
     }
+    
+    
+    
+    
+    
+    
+    
 
 }
