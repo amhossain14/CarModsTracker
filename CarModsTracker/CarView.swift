@@ -22,6 +22,11 @@ class CarView: UIViewController, UIImagePickerControllerDelegate {
     private let engineLabel: UILabel
     private let transmissionLabel: UILabel
     */
+    
+    
+    
+    
+    
     private let carImage: UIImageView
 
     init(CarToBeViewed: Car) {

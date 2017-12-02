@@ -29,7 +29,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     init() {
         
-        shanesCar = Car("2005", "ACURA", "TL", "3.2L V6 SOHC i-VTEC", "6-speed Manual", "123456")
+        shanesCar = Car(y: "2005", m: "ACURA", mo: "TL", eng: "3.2L V6 SOHC i-VTEC", trans: "6-speed Manual", plt: "123456")
         //amirsCar = Car("2006", "Nissan", "Maxima")
         
         car1 = UIImageView()
@@ -116,7 +116,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     @objc func addButtonPressed() {
         
         print("addButtonPressed")
-        let acvc: AddCarViewController = AddCarViewController()
+        let acvc: AddCarViewController = AddCarViewController(theGarage: garage)
         self.present(acvc, animated: true) { () -> Void in
             NSLog("AddCarViewController")
         }

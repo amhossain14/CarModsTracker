@@ -14,7 +14,9 @@ import UIKit
 class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
 
     // this is test
-     var carPicture:UIImageView
+     var carPicture: UIImageView
+    let currentGarage: linkedList<Car>
+    
     
     //Label
     let labelYear: UILabel
@@ -42,10 +44,10 @@ class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
     let addPicture: UIButton
     
     
-    init() {
+    init(theGarage : linkedList<Car>) {
         // this is test
              carPicture = UIImageView()
-        
+        currentGarage = theGarage
         
         
         // Labels
@@ -346,10 +348,36 @@ class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
     
     // Done button button Pressed method
     @objc func doneButtonPressed() {
+        let year :String =  textYear.text!
+        let make : String = textMake.text!
+        let model : String = textModel.text!
+        let engine : String = textengine.text!
+        let transmission : String = textTransmission.text!
+        let plate : String = textPlate.text!
+        
+        
+        
+        let newCar : Car = Car(y: year, m: make, mo: model, eng: engine, trans: transmission, plt: plate)
         
        
+        newCar.coverPhoto = carPicture
         
         print("DONE Button Pressed")
+        
+        
+        print(year)
+        print(make)
+        print(model)
+        print(engine)
+        print(transmission)
+        print(plate)
+        
+        
+   
+//        let vc: ViewController = ViewController()
+        self.present(ViewController(), animated: true) { () -> Void in
+            NSLog("Back to main Screen VC")
+        }
         
     }
     
@@ -430,7 +458,18 @@ class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
     }
     
     
-    
+    // this one Only Year
+//    func textField(_ textYear: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
+//        // non decimal digit character set, better save this as a property instead of creating it for each keyboard stroke
+//        let non_digits = NSCharacterSet.decimalDigits.inverted
+//        // Find location for non digits
+//        let range = string.rangeOfCharacter(from: non_digits)
+//        if range == nil { // no non digits found, allow change
+//
+//            return true
+//        }
+//        return false // range was valid, meaning non digits were found
+//    }
     
     
     
