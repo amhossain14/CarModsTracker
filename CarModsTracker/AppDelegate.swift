@@ -17,7 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.backgroundColor = UIColor.white
-        window?.rootViewController = ViewController() // whats the difference
+        let vc: ViewController = ViewController()
+        vc.title = "CarTracker"
+        window?.rootViewController = vc // whats the difference
         return true
         // Override point for customization after application launch.
         
