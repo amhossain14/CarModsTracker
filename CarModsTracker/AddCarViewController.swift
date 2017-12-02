@@ -347,14 +347,7 @@ class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
     // Done button button Pressed method
     @objc func doneButtonPressed() {
         
-        
-                if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary) {
-                    let imagePicker = UIImagePickerController()
-                    imagePicker.delegate = self
-                    imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
-                    imagePicker.allowsEditing = true
-                    self.present(imagePicker, animated: true, completion: nil)
-                }
+       
         
         print("DONE Button Pressed")
         
@@ -375,13 +368,24 @@ class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
 
         
 
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+//        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+//            let imagePicker = UIImagePickerController()
+//            imagePicker.delegate = self
+//            imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+//            imagePicker.allowsEditing = false
+//            self.present(imagePicker, animated: true, completion: nil)
+//        }
+        
+        
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary) {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
-            imagePicker.sourceType = UIImagePickerControllerSourceType.camera
-            imagePicker.allowsEditing = false
+            imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+            imagePicker.allowsEditing = true
             self.present(imagePicker, animated: true, completion: nil)
         }
+        
+        
         
         print("ADD Picture Button Pressesd ")
 
