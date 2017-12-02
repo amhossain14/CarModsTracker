@@ -39,6 +39,19 @@ public class linkedList<AnyType: Equatable>: NSObject {
         return size() == 0
     }
     
+    public func findIndex(carToBeFound: AnyType) -> Int {
+        var index: Int = 0;
+        for node in self {
+            
+            if node.value == carToBeFound {
+                return index
+            } else {
+                index += 1
+            }
+        }
+        return -1
+    }
+    
     public func remove(node: NodeType){
         
             let nextNode = node.next
