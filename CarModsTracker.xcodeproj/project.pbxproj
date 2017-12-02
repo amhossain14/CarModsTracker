@@ -29,6 +29,7 @@
 		3420E9AF1F8706DA00D802A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3420E9B11F8706DA00D802A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3449B5021FC52AED00FEC3A5 /* 2005acuratl.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2005acuratl.jpg; sourceTree = "<group>"; };
+		3469FDB11FCF6E55009A4B75 /* applogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = applogo.png; sourceTree = "<group>"; };
 		34BC8FA51FAE36B00081C38D /* linkedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = linkedList.swift; sourceTree = "<group>"; };
 		34BC8FA91FAE36DE0081C38D /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		34BC8FAB1FAE36ED0081C38D /* CarLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarLabel.swift; sourceTree = "<group>"; };
@@ -54,6 +55,7 @@
 				3420E9A41F8706DA00D802A3 /* CarModsTracker */,
 				3420E9A31F8706DA00D802A3 /* Products */,
 				3449B5021FC52AED00FEC3A5 /* 2005acuratl.jpg */,
+				3469FDB11FCF6E55009A4B75 /* applogo.png */,
 			);
 			sourceTree = "<group>";
 		};
