@@ -9,14 +9,13 @@
 
 import UIKit
 
-class CarView: UIViewController, UIImagePickerControllerDelegate {
-    
-    private let imagePicker = UIImagePickerController()
+class CarView: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     private let imagePickButton: UIButton
     
     private let currentCar: Car
     private let currentCarName: String
+    private let currentGarage: linkedList<Car>
     /*
     private let nameLabel: UILabel
     private let engineLabel: UILabel
@@ -24,9 +23,10 @@ class CarView: UIViewController, UIImagePickerControllerDelegate {
     */
     private let carImage: UIImageView
 
-    init(CarToBeViewed: Car) {
+    init(CarToBeViewed: Car, theGarage: linkedList<Car>) {
         
         currentCar = CarToBeViewed
+        currentGarage = theGarage
         currentCarName = currentCar.toString()
         imagePickButton = UIButton()
         carImage = UIImageView()
@@ -60,29 +60,35 @@ class CarView: UIViewController, UIImagePickerControllerDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @IBAction func loadImageButtonTapped(sender: UIButton) {
-        imagePicker.allowsEditing = false
-        imagePicker.sourceType = .photoLibrary
-        
-        present(imagePicker, animated: true, completion: nil)
+    @objc func loadImageButtonTapped(sender: UIButton) {
+        //if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        imagePicker.allowsEditing = true
+        self.present(imagePicker, animated: true, completion: nil)
+        //}
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        imagePicker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
     }
     
     // MARK: - UIImagePickerControllerDelegate Methods
     
-    private func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            carImage.contentMode = .scaleAspectFit
+            carImage.contentMode = .scaleToFill
             carImage.image = pickedImage
+            let currentIndex: Int = currentGarage.findIndex(carToBeFound: currentCar)
+            currentGarage.valueAt(index: currentIndex).coverPhoto = carImage
         }
-        
-        dismiss(animated: true, completion: nil)
+        self.view.addSubview(carImage)
+        picker.dismiss(animated: true, completion: nil)
     }
+    
     
     private func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)

@@ -17,51 +17,58 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     private let garage: linkedList<Car>
     private let shanesCar: Car
-   // private let amirsCar: Car
+    //private var tempCar: Car
+    // private let amirsCar: Car
     
+    //embedded car
     private let car1: UIImageView
-    private let car2: UIImageView
     
+    //views
     private let carView: CarView
     private let mainScrollView: UIScrollView
     
-   // private let navConstraints: CGRect
+    let screenSize: CGSize
+    let centerX: CGFloat
+    let centerY: CGFloat
+    let topOffset: CGFloat
+    let topLeftTitleOffset: CGFloat
+    let carConstraints: CGRect
+    let carLabelConstraints: CGSize
+    
     
     init() {
+        car1 = UIImageView()
+        car1.image = UIImage(named: "2005acuratl")
         
         shanesCar = Car("2005", "ACURA", "TL", "3.2L V6 SOHC i-VTEC", "6-speed Manual", "123456")
-        //amirsCar = Car("2006", "Nissan", "Maxima")
+        //tempCar = Car("2005", "ACURA", "TL", "3.2L V6 SOHC i-VTEC", "6-speed Manual", "123456")
+        shanesCar.coverPhoto = car1
         
-        car1 = UIImageView()
-        car2 = UIImageView()
         mainScrollView = UIScrollView()
-        
-        carView = CarView(CarToBeViewed: shanesCar)
-        
-        car1.image = UIImage(named: "2005acuratl")
-        //car2.image = UIImage(named: "2006nissanmaxima")
-        
         garage = linkedList()
-        
-        //garage.append(value: amirsCar)
         garage.append(value: shanesCar)
         
+        carView = CarView(CarToBeViewed: shanesCar, theGarage: garage)
+        
+        //Buttons and Labels
         addButton = UIButton(type: UIButtonType.custom) // addbutton
         appName =  UILabel() // tittle label
         navBackground = UILabel ()
         
+        //offsets and constraints
+        screenSize = UIScreen.main.bounds.size
+        centerX = screenSize.width / 2
+        centerY = screenSize.height / 2
+        topOffset = screenSize.height * 0.10
+        topLeftTitleOffset = topOffset * 0.1
+        carConstraints = CGRect(x: 0, y: topOffset, width: screenSize.width, height: screenSize.height-topOffset)
+        carLabelConstraints = CGSize(width: screenSize.width, height: screenSize.width * (9/16))
+        
         //Here's Super Init
         super.init(nibName: nil, bundle: nil)
         
-        //offsets and constraints
-        let screenSize: CGSize = UIScreen.main.bounds.size
-        let centerX: CGFloat = screenSize.width / 2
-        let centerY: CGFloat = screenSize.height / 2
-        let topOffset: CGFloat = screenSize.height * 0.10
-        let topLeftTitleOffset: CGFloat = topOffset * 0.1
-        let carConstraints = CGRect(x: 0, y: topOffset, width: screenSize.width, height: screenSize.height-topOffset)
-        let carLabelConstraints = CGSize(width: screenSize.width, height: screenSize.width * (9/16))
-       
+        
+        
         //scroll view
         mainScrollView.isScrollEnabled = true
         mainScrollView.bounces = true
@@ -75,11 +82,10 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         addButton.frame = CGRect(x: screenSize.width - (topOffset * 0.5) - 5, y: topOffset * 0.4, width: topOffset * 0.5, height: topOffset * 0.5)
         addButton.setImage(#imageLiteral(resourceName: "addbutton.png"), for: UIControlState.normal)
         addButton.addTarget(self, action: #selector(ViewController.addButtonPressed), for: UIControlEvents.touchUpInside)
-      
         self.view.addSubview(addButton)
-       
         
-       
+        
+        
         // title Label
         appName.text = "Car Mods Tracker"
         appName.font = UIFont.boldSystemFont(ofSize: 20.0)
@@ -87,24 +93,20 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         appName.textAlignment = NSTextAlignment.left
         appName.frame = CGRect(x: topLeftTitleOffset, y: topLeftTitleOffset, width: centerX, height: topOffset)
         self.view.addSubview(appName)
-       
+        
         print("title label shown")
         
-        // navbackground Label using for background
-        navBackground.backgroundColor = UIColor.white
-        navBackground.frame = carConstraints
-//        self.view.addSubview(navBackground)
         
         //first car label
         car1.frame = CGRect(x: (carConstraints.width * 0.03), y: (carConstraints.width * 0.03), width: carLabelConstraints.width * 0.94, height: carLabelConstraints.height * 0.94)
         car1.isUserInteractionEnabled = true
-        car1.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.handleTapPurple(_:))))
+        car1.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.handleTapOnCar(_:))))
         //car1.(self, action: #selector(ViewController.carPressed), for: UIControlEvents.touchUpInside)
         mainScrollView.addSubview(car1)
         
-
-         self.view.bringSubview(toFront: addButton)/// bring to the front
-         self.view.bringSubview(toFront: appName)/// bring to the front
+        
+        self.view.bringSubview(toFront: addButton)/// bring to the front
+        self.view.bringSubview(toFront: appName)/// bring to the front
         
     }
     
@@ -122,51 +124,34 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    @objc func handleTapPurple(_ recognizer: UITapGestureRecognizer) {
-        
+    @objc func handleTapOnCar(_ recognizer: UITapGestureRecognizer) {
+    
         let cv: CarView
-        cv = CarView(CarToBeViewed: shanesCar)
+        cv = CarView(CarToBeViewed: shanesCar, theGarage: garage)
         
         self.present(cv, animated: true) { () -> Void in
             NSLog("CarViewController")
+        }
         
     }
     
-}
-
-
-
-//=======
-//
-//
-//
-//    /*
-// let carA: Car
-// let carB: Car
-//
-// let carList: linkedList<Car>
-//
-// var testString: String
-//
-// init() {
-// carA = Car("2005", "Acura", "TL")
-// carB = Car("2007", "Nissan", "Maxima")
-// carList = linkedList()
-//
-// carList.append(value: carA)
-// carList.append(value: carB)
-//
-// testString = carList.nodeAt(index: 1).value.toString()
-// super.init(nibName: nil, bundle: nil)
-// print(testString)
-//
-// for node in carList {
-//
-// testString = node.value.toString()
-// print(testString)
-// */
-// }
-//
-//}
-
+    private func refreshScrollView() {
+        
+        self.mainScrollView.removeFromSuperview()
+        
+        let positionIndex: CGFloat = 1.0
+        
+        for car in garage {
+            let tempCar: UIImageView = car.value.coverPhoto
+            let gesture = UITapGestureRecognizer(target: self, action: #selector(self.handleTapOnCar(_:)))
+            
+            tempCar.frame = CGRect(x: (self.carConstraints.width * 0.03), y: (carConstraints.width * 0.03) + ((carLabelConstraints.height * 0.94)*positionIndex), width: carLabelConstraints.width * 0.94, height: carLabelConstraints.height * 0.94)
+            tempCar.isUserInteractionEnabled = true
+            tempCar.addGestureRecognizer(gesture)
+        }
+        
+        self.view.addSubview(mainScrollView)
+        
+    }
+    
 }
