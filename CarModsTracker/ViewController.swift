@@ -486,7 +486,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         
         print("Tap on car 2")
         let cv: CarView
-        cv = CarView(CarToBeViewed: garage.nodeAt(index: 0).value)
+        cv = CarView(CarToBeViewed: garage.nodeAt(index: 1).value)
         
         self.present(cv, animated: true) { () -> Void in
             NSLog("CarViewController")
@@ -497,7 +497,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
     @objc func handleTapOnCar3(_ recognizer: UITapGestureRecognizer) {
         
         let cv: CarView
-        cv = CarView(CarToBeViewed: garage.nodeAt(index: 0).value)
+        cv = CarView(CarToBeViewed: garage.nodeAt(index: 2).value)
         
         self.present(cv, animated: true) { () -> Void in
             NSLog("CarViewController")
@@ -574,15 +574,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         print(plate)
         
         garage.append(value: newCar)
-<<<<<<< HEAD
-        print(garage)
-        self.addCarScrollView.removeFromSuperview()
-=======
-        
+
         carsIndex+=1
         
         self.carScrollView.removeFromSuperview()
->>>>>>> 033bcab4b24592bc9d6295a99e08780ea8ee7ed3
         
     }
     
@@ -650,23 +645,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         }
         return true
     }
-    
-<<<<<<< HEAD
-    
-//    *****************************************************************************************************************************************************//
-    
-    class CarView: UIViewController, UITableViewDelegate, UITableViewDataSource {
-=======
-    class CarView: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-        
-        private let imagePickButton: UIButton
-        
-        private let currentCar: Car
-        private let currentCarName: String
 
-        
->>>>>>> 033bcab4b24592bc9d6295a99e08780ea8ee7ed3
-        
+    class CarView: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
         
         var tableView = UITableView()
         
