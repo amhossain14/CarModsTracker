@@ -18,10 +18,12 @@ class Car: NSObject {
     public var engine: String
     public var transmission: String
     public var plate: String
+    public var drivetrain: String
+    public var vin: String
     public var coverPhoto: UIImageView
 
     // Method @init() creates a car object with the parameters year, make, and model. Cars can be added to @linkedList
-    init(y: String, m: String, mo: String,  eng: String,  trans: String,  plt: String) {
+    init(y: String, m: String, mo: String,  eng: String,  trans: String,  plt: String, dt: String, vn: String) {
         
         year = y
         make = m
@@ -29,6 +31,8 @@ class Car: NSObject {
         engine = eng
         transmission = trans
         plate = plt
+        drivetrain = dt
+        vin = vn
         coverPhoto = UIImageView()
         super.init()
         

@@ -29,7 +29,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
     //views
     private let carView: CarView
     private let mainScrollView: UIScrollView
-    private var acvc: AddCarViewController
     
     //let screenSize: CGSize
     //let centerX: CGFloat
@@ -78,7 +77,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         car1 = UIImageView()
         car1.image = UIImage(named: "2005acuratl")
         
-        shanesCar = Car(y: "2005", m: "ACURA", mo: "TL", eng: "3.2L V6 SOHC i-VTEC", trans: "6-speed Manual", plt: "123456")
+        shanesCar = Car(y: "2005", m: "ACURA", mo: "TL", eng: "3.2L V6 SOHC i-VTEC", trans: "6-speed Manual", plt: "123456", dt: "FWD", vn: "123456789")
         //tempCar = Car("2005", "ACURA", "TL", "3.2L V6 SOHC i-VTEC", "6-speed Manual", "123456")
         shanesCar.coverPhoto = car1
         
@@ -103,7 +102,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         carConstraints = CGRect(x: 0, y: topOffset, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height-topOffset)
         carLabelConstraints = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.width * (9/16))
         
-        acvc = AddCarViewController(theGarage: garage)
+        //acvc = AddCarViewController(theGarage: garage)
         //******************************************************
         
         // this is test
@@ -555,10 +554,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         let engine : String = textengine.text!
         let transmission : String = textTransmission.text!
         let plate : String = textPlate.text!
+        let drivetrain: String = textDrivetrain.text!
+        let vin: String = textVin.text!
         
         
-        
-        let newCar = Car(y: year, m: make, mo: model, eng: engine, trans: transmission, plt: plate)
+        let newCar = Car(y: year, m: make, mo: model, eng: engine, trans: transmission, plt: plate, dt: drivetrain, vn: vin)
         
         
         newCar.coverPhoto = carPicture
@@ -578,11 +578,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         carsIndex+=1
         
         self.carScrollView.removeFromSuperview()
-<<<<<<< HEAD
-=======
-
->>>>>>> 47b3ab5892bc9066377af2f663372a298316bcb0
-        
     }
     
     // Cancel button button Pressed method
@@ -649,33 +644,23 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         }
         return true
     }
-<<<<<<< HEAD
 
-    class CarView: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
-=======
-    
-
-    
-//    *****************************************************************************************************************************************************//
     
     class CarView: UIViewController, UITableViewDelegate, UITableViewDataSource {
  
->>>>>>> 47b3ab5892bc9066377af2f663372a298316bcb0
         
         var tableView = UITableView()
-        
-        let data = [["2006"], ["Altima"],["Nissan"],["12Easdjndajsn2"], ["Auto"] ]
+        var data: [String]
 //        var data : [Any] = []
 //        var data : [ String]
-        let headerTitles = ["Year ", "Model", "Make","Vin", "Transmission"]
+        let headerTitles: [String]
 //        var someInts = [Int]()
-
+        
         
         init(CarToBeViewed: Car) {
         
-            
-//            data = [[CarToBeViewed.year],[CarToBeViewed.model],[CarToBeViewed.make],[CarToBeViewed.engine],[CarToBeViewed.transmission]]
+            headerTitles = ["Selected Car"]
+            data = [CarToBeViewed.year,CarToBeViewed.make,CarToBeViewed.model,CarToBeViewed.engine,CarToBeViewed.transmission,CarToBeViewed.plate,CarToBeViewed.drivetrain,CarToBeViewed.vin]
             
    
             super.init(nibName: nil, bundle: nil)
@@ -718,10 +703,12 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         ////////////*************************************////////////////////////////
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "my", for: indexPath)
-            //        cell.textLabel?.text = "This is row \(tableData[indexPath.row])"
-            //        cell.textLabel?.text = "This is row \(data[indexPath.section][indexPath.row])"
+            //
             
-//            cell.textLabel?.text = (data[indexPath.section][indexPath.row])
+            cell.textLabel?.text = "\(data[indexPath.row])"
+                    //cell.textLabel?.text = "This is row \(data[indexPath.section][indexPath.row])"
+            
+            //cell.textLabel?.text = (data[indexPath.section][indexPath.row])
             //            print("This is row \(data[indexPath.section][indexPath.row])") // this is how its printing
             return cell
         }
@@ -730,14 +717,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
             //return tableData.count
             
             //        print ("This is shit \(data[section])")
-            return (data[section]).count
+            return 8
         }
 
         
         
         
         func numberOfSections(in tableView: UITableView) -> Int {
-            return data.count
+            return 1
         }
         
         func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
