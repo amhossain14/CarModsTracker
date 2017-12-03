@@ -82,7 +82,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         garage = linkedList()
         garage.append(value: shanesCar)
         
-        carView = CarView(CarToBeViewed: shanesCar, theGarage: garage)
+        carView = CarView(CarToBeViewed: shanesCar)
         
         //Buttons and Labels
         addButton = UIButton(type: UIButtonType.custom) // addbutton
@@ -485,7 +485,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
             positionIndex += 1.0
         }
         print("ScrollView refreshed")
-        
     }
     
     // Done button button Pressed method
@@ -591,7 +590,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         
         private let currentCar: Car
         private let currentCarName: String
-        private let currentGarage: linkedList<Car>
+        //private let currentGarage: linkedList<Car>
         /*
          private let nameLabel: UILabel
          private let engineLabel: UILabel
@@ -663,7 +662,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
                 carImage.contentMode = .scaleToFill
                 carImage.image = pickedImage
                 let currentIndex: Int = currentGarage.findIndex(carToBeFound: currentCar)
-                currentGarage.valueAt(index: currentIndex).coverPhoto = carImage
+                .valueAt(index: currentIndex).coverPhoto = carImage
             }
             self.view.addSubview(carImage)
             picker.dismiss(animated: true, completion: nil)
