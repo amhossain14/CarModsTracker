@@ -578,6 +578,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         carsIndex+=1
         
         self.carScrollView.removeFromSuperview()
+<<<<<<< HEAD
+=======
+
+>>>>>>> 47b3ab5892bc9066377af2f663372a298316bcb0
         
     }
     
@@ -645,9 +649,19 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         }
         return true
     }
+<<<<<<< HEAD
 
     class CarView: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+=======
+    
+
+    
+//    *****************************************************************************************************************************************************//
+    
+    class CarView: UIViewController, UITableViewDelegate, UITableViewDataSource {
+ 
+>>>>>>> 47b3ab5892bc9066377af2f663372a298316bcb0
         
         var tableView = UITableView()
         
@@ -659,18 +673,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
 
         
         init(CarToBeViewed: Car) {
-//            override func viewDidLoad() {
-//                super.viewDidLoad()
-            
-            
-            
+        
             
 //            data = [[CarToBeViewed.year],[CarToBeViewed.model],[CarToBeViewed.make],[CarToBeViewed.engine],[CarToBeViewed.transmission]]
             
-            
-            
-            
-            
+   
             super.init(nibName: nil, bundle: nil)
             
             
@@ -725,7 +732,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
             //        print ("This is shit \(data[section])")
             return (data[section]).count
         }
-<<<<<<< HEAD
+
         
         
         
@@ -754,11 +761,12 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
             self.present(alert, animated: true, completion: nil)
         }
         
-=======
+
     }
     
->>>>>>> 033bcab4b24592bc9d6295a99e08780ea8ee7ed3
+
 
     
 }
-}
+//}
+
