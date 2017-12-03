@@ -14,9 +14,8 @@ import UIKit
 class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
 
     // this is test
-     var carPicture: UIImageView
+    var carPicture: UIImageView
     let currentGarage: linkedList<Car>
-    
     
     //Label
     let labelYear: UILabel
@@ -33,10 +32,10 @@ class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
     let textModel:UITextField
     let textMake:UITextField
     let textVin: UITextField
-    let textTransmission : UITextField
-    let textPlate : UITextField
-    let textengine : UITextField
-    let textDrivetrain : UITextField
+    let textTransmission: UITextField
+    let textPlate: UITextField
+    let textengine: UITextField
+    let textDrivetrain: UITextField
     
     // Button
     let doneButton: UIButton
@@ -44,11 +43,11 @@ class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
     let addPicture: UIButton
     
     
+    
     init(theGarage : linkedList<Car>) {
         // this is test
-             carPicture = UIImageView()
+        carPicture = UIImageView()
         currentGarage = theGarage
-        
         
         // Labels
         labelYear = UILabel()
@@ -372,12 +371,10 @@ class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         print(transmission)
         print(plate)
         
+        currentGarage.append(value: newCar)
         
-   
-//        let vc: ViewController = ViewController()
-        self.present(ViewController(), animated: true) { () -> Void in
-            NSLog("Back to main Screen VC")
-        }
+        self.presentingViewController?.dismiss(animated: true, completion: { () -> Void in
+        })
         
     }
     
@@ -394,17 +391,6 @@ class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
     // Add picture button button Pressed method
     @objc func addPictureButtonPressed() {
 
-        
-
-//        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
-//            let imagePicker = UIImagePickerController()
-//            imagePicker.delegate = self
-//            imagePicker.sourceType = UIImagePickerControllerSourceType.camera
-//            imagePicker.allowsEditing = false
-//            self.present(imagePicker, animated: true, completion: nil)
-//        }
-        
-        
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary) {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
