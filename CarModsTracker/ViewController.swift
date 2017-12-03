@@ -11,6 +11,8 @@ import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
     
+    private var carsIndex: Int
+    
     private let addButton: UIButton
     private let refreshButton: UIButton
     private let appName: UILabel
@@ -68,9 +70,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
     let cancelButton: UIButton
     let addPicture: UIButton
     
-    let addCarScrollView: UIView
+    let carScrollView: UIView
     
     init() {
+        carsIndex = 0
+        
         car1 = UIImageView()
         car1.image = UIImage(named: "2005acuratl")
         
@@ -145,7 +149,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         // for buttons position
         let bottomOffset: CGFloat = screenSize.height * 0.10
         
-        addCarScrollView = UIView() // this make sure its full screen
+        carScrollView = UIView() // this make sure its full screen
         
         //Here's Super Init
         super.init(nibName: nil, bundle: nil)
@@ -203,8 +207,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
 //        addCarScrollView.showsHorizontalScrollIndicator = false
 //        addCarScrollView.showsVerticalScrollIndicator = true
 //        addCarScrollView.contentSize = CGSize(width: screenSize.width, height: screenSize.height*1.0001)
-        addCarScrollView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
-        addCarScrollView.backgroundColor = UIColor.red
+        carScrollView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
+        carScrollView.backgroundColor = UIColor.red
         
         // Label for Year
         labelYear.text = "Year"
@@ -213,7 +217,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         labelYear.textColor = UIColor.black
         labelYear.textAlignment = NSTextAlignment.center
         labelYear.frame = CGRect(x: centerXWith10, y: (centerYWith10*5), width: centerX * 2, height: labelHeight)
-        addCarScrollView.addSubview(labelYear)
+        carScrollView.addSubview(labelYear)
         
         // TEXTFIELD for Year
         textYear.frame = CGRect(x: centerXWith10, y: (centerYWith10*15), width: centerX * 2, height: labelHeight)
@@ -227,7 +231,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         textYear.returnKeyType = UIReturnKeyType.done
         textYear.clearButtonMode = UITextFieldViewMode.always
         textYear.delegate = self
-        addCarScrollView.addSubview(textYear)
+        carScrollView.addSubview(textYear)
         
         // Label for MODEL
         labelModel.text = "Model"
@@ -236,7 +240,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         labelModel.textColor = UIColor.black
         labelModel.textAlignment = NSTextAlignment.center
         labelModel.frame = CGRect(x: centerXWith10, y: (centerYWith10*25), width: centerX * 2, height: labelHeight)
-        addCarScrollView.addSubview(labelModel)
+        carScrollView.addSubview(labelModel)
         
         // TEXTFIELD for MODEL
         textModel.frame = CGRect(x: centerXWith10, y: (centerYWith10*35), width: centerX * 2, height: labelHeight)
@@ -250,7 +254,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         textModel.returnKeyType = UIReturnKeyType.done
         textModel.clearButtonMode = UITextFieldViewMode.always
         textModel.delegate = self
-        addCarScrollView.addSubview(textModel)
+        carScrollView.addSubview(textModel)
         
         // Label for MAKE
         labelMake.text = "Make"
@@ -259,7 +263,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         labelMake.textColor = UIColor.black
         labelMake.textAlignment = NSTextAlignment.center
         labelMake.frame = CGRect(x: centerXWith10, y: (centerYWith10*45), width: centerX * 2, height: labelHeight)
-        addCarScrollView.addSubview(labelMake)
+        carScrollView.addSubview(labelMake)
         
         // TEXTFIELD for MAKE
         textMake.frame = CGRect(x: centerXWith10, y: (centerYWith10*55), width: centerX * 2, height: labelHeight)
@@ -273,7 +277,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         textMake.returnKeyType = UIReturnKeyType.done
         textMake.clearButtonMode = UITextFieldViewMode.always
         textMake.delegate = self
-        addCarScrollView.addSubview(textMake)
+        carScrollView.addSubview(textMake)
         
         //labelVin
         labelVin.text = "VIN"
@@ -282,7 +286,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         labelVin.textColor = UIColor.black
         labelVin.textAlignment = NSTextAlignment.center
         labelVin.frame = CGRect(x: centerXWith10, y: (centerYWith10*65), width: centerX * 2, height: labelHeight)
-        addCarScrollView.addSubview(labelVin)
+        carScrollView.addSubview(labelVin)
         
         
         //textVin
@@ -297,7 +301,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         textVin.returnKeyType = UIReturnKeyType.done
         textVin.clearButtonMode = UITextFieldViewMode.always
         textVin.delegate = self
-        addCarScrollView.addSubview(textVin)
+        carScrollView.addSubview(textVin)
         
         
         //labelTransmission
@@ -307,7 +311,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         labelTransmission.textColor = UIColor.black
         labelTransmission.textAlignment = NSTextAlignment.center
         labelTransmission.frame = CGRect(x: centerXWith10, y: (centerYWith10*85), width: centerX * 2, height: labelHeight)
-        addCarScrollView.addSubview(labelTransmission)
+        carScrollView.addSubview(labelTransmission)
         
         //textTransmission
         textTransmission.frame = CGRect(x: centerXWith10, y: (centerYWith10*95), width: centerX * 2, height: labelHeight)
@@ -321,7 +325,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         textTransmission.returnKeyType = UIReturnKeyType.done
         textTransmission.clearButtonMode = UITextFieldViewMode.always
         textTransmission.delegate = self
-        addCarScrollView.addSubview(textTransmission)
+        carScrollView.addSubview(textTransmission)
         
         
         //labelPlate
@@ -331,7 +335,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         labelPlate.textColor = UIColor.black
         labelPlate.textAlignment = NSTextAlignment.center
         labelPlate.frame = CGRect(x: centerXWith10, y: (centerYWith10*105), width: centerX * 2, height: labelHeight)
-        addCarScrollView.addSubview(labelPlate)
+        carScrollView.addSubview(labelPlate)
         
         
         //textPlate
@@ -346,7 +350,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         textPlate.returnKeyType = UIReturnKeyType.done
         textPlate.clearButtonMode = UITextFieldViewMode.always
         textPlate.delegate = self
-        addCarScrollView.addSubview(textPlate)
+        carScrollView.addSubview(textPlate)
         
         //labelengine
         labelengine.text = "Engine"
@@ -355,7 +359,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         labelengine.textColor = UIColor.black
         labelengine.textAlignment = NSTextAlignment.center
         labelengine.frame = CGRect(x: centerXWith10, y: (centerYWith10*125), width: centerX * 2, height: labelHeight)
-        addCarScrollView.addSubview(labelengine)
+        carScrollView.addSubview(labelengine)
         
         
         //textengine
@@ -370,7 +374,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         textengine.returnKeyType = UIReturnKeyType.done
         textengine.clearButtonMode = UITextFieldViewMode.always
         textengine.delegate = self
-        addCarScrollView.addSubview(textengine)
+        carScrollView.addSubview(textengine)
         
         //label Drivetrain
         labelDrivetrain.text = "Drivetrain"
@@ -379,8 +383,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         labelDrivetrain.textColor = UIColor.black
         labelDrivetrain.textAlignment = NSTextAlignment.center
         labelDrivetrain.frame = CGRect(x: centerXWith10, y: (centerYWith10*145), width: centerX * 2, height: labelHeight)
-        addCarScrollView.addSubview(labelDrivetrain)
-        
+        carScrollView.addSubview(labelDrivetrain)
         
         //TextDrivetrain
         textDrivetrain.frame = CGRect(x: centerXWith10, y: (centerYWith10*155), width: centerX * 2, height: labelHeight)
@@ -394,7 +397,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         textDrivetrain.returnKeyType = UIReturnKeyType.done
         textDrivetrain.clearButtonMode = UITextFieldViewMode.always
         textDrivetrain.delegate = self
-        addCarScrollView.addSubview(textDrivetrain)
+        carScrollView.addSubview(textDrivetrain)
         
         
         // Done Button
@@ -403,32 +406,30 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         doneButton.backgroundColor = UIColor.blue;
         doneButton.setTitle("Done", for: UIControlState.normal)
         doneButton.addTarget(self, action: #selector(ViewController.doneButtonPressed), for: UIControlEvents.touchUpInside)
-        addCarScrollView.addSubview(doneButton)
+        carScrollView.addSubview(doneButton)
         
         // add Picture Button
         addPicture.frame = CGRect(x: (bottomOffset * 0.5) * 3.4 + (centerXWith10 ) , y: screenSize.height * 0.9, width: (bottomOffset * 0.5) * 3.5, height: bottomOffset * 0.5)
         addPicture.setTitle("Add Picture", for: UIControlState.normal)
         addPicture.backgroundColor = UIColor.blue;
         addPicture.addTarget(self, action: #selector(ViewController.addPictureButtonPressed), for: UIControlEvents.touchUpInside)
-        addCarScrollView.addSubview(addPicture)
+        carScrollView.addSubview(addPicture)
         
         // Cancel Button
         cancelButton.frame = CGRect(x: centerX * 1.6 , y: screenSize.height * 0.9, width: (bottomOffset * 0.5) * 2, height: bottomOffset * 0.5)
         cancelButton.setTitle("Cancel", for: UIControlState.normal)
         cancelButton.backgroundColor = UIColor.blue;
         cancelButton.addTarget(self, action: #selector(ViewController.cancelButtonPressed), for: UIControlEvents.touchUpInside)
-        addCarScrollView.addSubview(cancelButton)
+        carScrollView.addSubview(cancelButton)
         
         
         
         
         carPicture.backgroundColor = UIColor.yellow
-        //        pic.image = UIImage(named: "play.png")
-        //        self.view.addSubview(play) // to add on the screen
         carPicture.frame = CGRect(x: centerXWith10, y: (centerYWith10*165), width: centerX * 2, height: labelHeight)
         
-        addCarScrollView.addSubview(carPicture)
-        addCarScrollView.backgroundColor = UIColor.red
+        carScrollView.addSubview(carPicture)
+        carScrollView.backgroundColor = UIColor.red
         //mainScrollView.addSubview(addCarScrollView)
         //mainScrollView.bringSubview(toFront: addCarScrollView)
     }
@@ -439,15 +440,28 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
     
     // addbutton button Pressed method
     @objc func addButtonPressed() {
-        /*
-        print("addButtonPressed")
-        acvc = AddCarViewController(theGarage: garage)
-        self.present(acvc, animated: true) { () -> Void in
-            NSLog("AddCarViewController")
-        }
-         */
+        
+        let screenSize: CGSize = UIScreen.main.bounds.size
+        let centerX: CGFloat = screenSize.width / 2
+        let centerY: CGFloat = screenSize.height / 2
+        
+        // This height and width are for Textbox and Label height is .05% of the screens
+        let labelHeight: CGFloat = screenSize.height * 0.05
+        //        let labelWidth: CGFloat = screenSize.width * 1
+        
+        // For Center X and Y with 10%
+        let centerXWith10: CGFloat = centerX * 0.01
+        let centerYWith10: CGFloat = centerY * 0.01
+        
+        carPicture = UIImageView()
+        carPicture.backgroundColor = UIColor.yellow
+        carPicture.frame = CGRect(x: centerXWith10, y: (centerYWith10*165), width: centerX * 2, height: labelHeight)
+        
+        carScrollView.addSubview(carPicture)
+        
         print("DONE Button Pressed")
-        self.view.addSubview(addCarScrollView)
+        
+        self.view.addSubview(carScrollView)
     }
     
     @objc func refreshButtonPressed() {
@@ -458,8 +472,32 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
     
     @objc func handleTapOnCar(_ recognizer: UITapGestureRecognizer) {
     
+        print("Tap on car 1")
         let cv: CarView
-        cv = CarView(CarToBeViewed: shanesCar)
+        cv = CarView(CarToBeViewed: garage.nodeAt(index: 0).value)
+        
+        self.present(cv, animated: true) { () -> Void in
+            NSLog("CarViewController")
+        }
+        
+    }
+    
+    @objc func handleTapOnCar2(_ recognizer: UITapGestureRecognizer) {
+        
+        print("Tap on car 2")
+        let cv: CarView
+        cv = CarView(CarToBeViewed: garage.nodeAt(index: 0).value)
+        
+        self.present(cv, animated: true) { () -> Void in
+            NSLog("CarViewController")
+        }
+        
+    }
+    
+    @objc func handleTapOnCar3(_ recognizer: UITapGestureRecognizer) {
+        
+        let cv: CarView
+        cv = CarView(CarToBeViewed: garage.nodeAt(index: 0).value)
         
         self.present(cv, animated: true) { () -> Void in
             NSLog("CarViewController")
@@ -468,22 +506,44 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
     }
     
     private func refreshScrollView() {
-        
-        var positionIndex: CGFloat = 0.0
-        
-//        garage = self.acvc.currentGarage
-        
+        var i: Int = 0
         for car in garage {
-            print(car.value.model)
-            let tempCar: UIImageView = car.value.coverPhoto
-            let gesture = UITapGestureRecognizer(target: self, action: #selector(self.handleTapOnCar(_:)))
+            print(car.value.make)
+            i+=1
+        }
+        
+        print(garage.nodeAt(index: 0).value.model)
+        let tempCar: UIImageView = garage.nodeAt(index: 0).value.coverPhoto
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.handleTapOnCar(_:)))
+        
+        tempCar.frame = CGRect(x: (carConstraints.width * 0.03), y: (carConstraints.width * 0.03), width: carLabelConstraints.width * 0.94, height: carLabelConstraints.height * 0.94)
+        tempCar.isUserInteractionEnabled = true
+        tempCar.addGestureRecognizer(gesture)
+        self.mainScrollView.addSubview(tempCar)
+        
+        if carsIndex == 1 {
             
-            tempCar.frame = CGRect(x: (self.carConstraints.width * 0.03), y: (carConstraints.width * 0.03) + ((carLabelConstraints.height * 0.94)*positionIndex), width: carLabelConstraints.width * 0.94, height: carLabelConstraints.height * 0.94)
+            let tempCar: UIImageView = garage.nodeAt(index: 1).value.coverPhoto
+            let gesture = UITapGestureRecognizer(target: self, action: #selector(self.handleTapOnCar2(_:)))
+            
+            tempCar.frame = CGRect(x: (self.carConstraints.width * 0.03), y: (carConstraints.width * 0.03) + ((carLabelConstraints.height)*1), width: carLabelConstraints.width * 0.94, height: carLabelConstraints.height * 0.94)
             tempCar.isUserInteractionEnabled = true
             tempCar.addGestureRecognizer(gesture)
             self.mainScrollView.addSubview(tempCar)
-            positionIndex += 1.0
         }
+        
+        if carsIndex == 2 {
+            print(garage.nodeAt(index: 2).value.model)
+            let tempCar: UIImageView = garage.nodeAt(index: 2).value.coverPhoto
+            let gesture = UITapGestureRecognizer(target: self, action: #selector(self.handleTapOnCar3(_:)))
+            
+            tempCar.frame = CGRect(x: (self.carConstraints.width * 0.03), y: (carConstraints.width * 0.03) + ((carLabelConstraints.height)*2), width: carLabelConstraints.width * 0.94, height: carLabelConstraints.height * 0.94)
+            tempCar.isUserInteractionEnabled = true
+            tempCar.addGestureRecognizer(gesture)
+            self.mainScrollView.addSubview(tempCar)
+        }
+        
+        
         print("ScrollView refreshed")
     }
     
@@ -498,7 +558,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         
         
         
-        let newCar : Car = Car(y: year, m: make, mo: model, eng: engine, trans: transmission, plt: plate)
+        let newCar = Car(y: year, m: make, mo: model, eng: engine, trans: transmission, plt: plate)
         
         
         newCar.coverPhoto = carPicture
@@ -514,8 +574,15 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         print(plate)
         
         garage.append(value: newCar)
+<<<<<<< HEAD
         print(garage)
         self.addCarScrollView.removeFromSuperview()
+=======
+        
+        carsIndex+=1
+        
+        self.carScrollView.removeFromSuperview()
+>>>>>>> 033bcab4b24592bc9d6295a99e08780ea8ee7ed3
         
     }
     
@@ -584,10 +651,21 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         return true
     }
     
+<<<<<<< HEAD
     
 //    *****************************************************************************************************************************************************//
     
     class CarView: UIViewController, UITableViewDelegate, UITableViewDataSource {
+=======
+    class CarView: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+        
+        private let imagePickButton: UIButton
+        
+        private let currentCar: Car
+        private let currentCarName: String
+
+        
+>>>>>>> 033bcab4b24592bc9d6295a99e08780ea8ee7ed3
         
         
         var tableView = UITableView()
@@ -666,6 +744,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
             //        print ("This is shit \(data[section])")
             return (data[section]).count
         }
+<<<<<<< HEAD
         
         
         
@@ -694,6 +773,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
             self.present(alert, animated: true, completion: nil)
         }
         
+=======
+    }
+    
+>>>>>>> 033bcab4b24592bc9d6295a99e08780ea8ee7ed3
 
     
 }
