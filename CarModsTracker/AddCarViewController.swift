@@ -436,7 +436,7 @@ class AddCarViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print("TEXT field for ")// textYear
         if textYear == textField {
-//            textVin.text = textYear.text
+            textYear.text = textYear.text
             if textYear.text == "Hide" {
                 textYear.resignFirstResponder()   // hide keyboard
                 textYear.isHidden = true          // hide textfield

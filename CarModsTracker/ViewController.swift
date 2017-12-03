@@ -40,14 +40,14 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         car1 = UIImageView()
         car1.image = UIImage(named: "2005acuratl")
         
-<<<<<<< HEAD
+
         shanesCar = Car(y: "2005", m: "ACURA", mo: "TL", eng: "3.2L V6 SOHC i-VTEC", trans: "6-speed Manual", plt: "123456")
         //amirsCar = Car("2006", "Nissan", "Maxima")
-=======
-        shanesCar = Car("2005", "ACURA", "TL", "3.2L V6 SOHC i-VTEC", "6-speed Manual", "123456")
+
+//        shanesCar = Car("2005", "ACURA", "TL", "3.2L V6 SOHC i-VTEC", "6-speed Manual", "123456")
         //tempCar = Car("2005", "ACURA", "TL", "3.2L V6 SOHC i-VTEC", "6-speed Manual", "123456")
         shanesCar.coverPhoto = car1
->>>>>>> bad889f6784cbea42842c137eebc17c01bd509ef
+
         
         mainScrollView = UIScrollView()
         garage = linkedList()
