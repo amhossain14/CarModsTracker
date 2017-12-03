@@ -649,6 +649,15 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
     class CarView: UIViewController, UITableViewDelegate, UITableViewDataSource {
  
         
+        
+        let screenSize: CGSize = UIScreen.main.bounds.size
+//        let centerX: CGFloat = screenSize.width / 2
+//        let centerY: CGFloat = screenSize.height / 2
+
+        
+        
+            let backButton: UIButton
+        
         var tableView = UITableView()
         var data: [String]
 //        var data : [Any] = []
@@ -662,8 +671,12 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
             headerTitles = ["Selected Car"]
             data = [CarToBeViewed.year,CarToBeViewed.make,CarToBeViewed.model,CarToBeViewed.engine,CarToBeViewed.transmission,CarToBeViewed.plate,CarToBeViewed.drivetrain,CarToBeViewed.vin]
             
-   
+           backButton = UIButton(type: UIButtonType.custom)
+            
+            
             super.init(nibName: nil, bundle: nil)
+            
+           
             
             
             // Do any additional setup after loading the view, typically from a nib.
@@ -691,13 +704,45 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
             self.tableView.tableFooterView = footer
             
             
+            
+            backButton.frame = CGRect(x: (screenSize.width / 2) , y: screenSize.height * 0.9, width: (90), height:  90)
+            backButton.setTitle("Back", for: UIControlState.normal)
+            backButton.backgroundColor = UIColor.blue;
+            backButton.addTarget(self, action: #selector(CarView.backButtonClicked), for: UIControlEvents.touchUpInside)
+            self.view.addSubview(backButton)
+            
             self.view.addSubview(tableView)
+            
+        self.view.bringSubview(toFront: backButton)/// bring to the front
+            
+            
         
     }
         
         required init?(coder aDecoder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
+        
+        
+        
+
+        
+        @objc func backButtonClicked() {
+            
+            print("BACK Button Pressed")
+//            let vc: ViewController = ViewController()
+//            self.present(vc, animated: true) { () -> Void in
+                NSLog("Back to main Screen VC")
+
+            self.presentingViewController?.dismiss(animated: true, completion: { () -> Void in
+                //        })
+//        CarView.dismiss(animated: true, completion: nil)
+            
+//             self.removeFromSuperview()
+            
+            
+        })
+}
         
         
         ////////////*************************************////////////////////////////
