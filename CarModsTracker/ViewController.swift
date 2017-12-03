@@ -82,7 +82,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         garage = linkedList()
         garage.append(value: shanesCar)
         
-        carView = CarView(CarToBeViewed: shanesCar, theGarage: garage)
+        carView = CarView(CarToBeViewed: shanesCar)
         
         //Buttons and Labels
         addButton = UIButton(type: UIButtonType.custom) // addbutton
@@ -471,7 +471,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         
         var positionIndex: CGFloat = 0.0
         
-        garage = self.acvc.currentGarage
+//        garage = self.acvc.currentGarage
         
         for car in garage {
             print(car.value.model)
@@ -591,7 +591,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         
         private let currentCar: Car
         private let currentCarName: String
-        private let currentGarage: linkedList<Car>
+//        private let currentGarage: linkedList<Car>
         /*
          private let nameLabel: UILabel
          private let engineLabel: UILabel
@@ -653,25 +653,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         override func viewDidLoad() {
             super.viewDidLoad()
             
-        }
-        
-        // MARK: - UIImagePickerControllerDelegate Methods
-        
-        
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-            if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-                carImage.contentMode = .scaleToFill
-                carImage.image = pickedImage
-                let currentIndex: Int = currentGarage.findIndex(carToBeFound: currentCar)
-                currentGarage.valueAt(index: currentIndex).coverPhoto = carImage
-            }
-            self.view.addSubview(carImage)
-            picker.dismiss(animated: true, completion: nil)
-        }
-        
-        
-        private func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-            dismiss(animated: true, completion: nil)
         }
     }
     
