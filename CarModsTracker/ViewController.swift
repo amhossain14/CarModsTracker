@@ -514,7 +514,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         print(plate)
         
         garage.append(value: newCar)
-        
+        print(garage)
         self.addCarScrollView.removeFromSuperview()
         
     }
@@ -584,103 +584,117 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         return true
     }
     
-    class CarView: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-        
-        private let imagePickButton: UIButton
-        
-        private let currentCar: Car
-        private let currentCarName: String
-<<<<<<< HEAD
-//        private let currentGarage: linkedList<Car>
-=======
-        //private let currentGarage: linkedList<Car>
->>>>>>> 8ad833b96b852fc6dcebab3cbaf2a5fda4608de6
-        /*
-         private let nameLabel: UILabel
-         private let engineLabel: UILabel
-         private let transmissionLabel: UILabel
-         */
+    
+//    *****************************************************************************************************************************************************//
+    
+    class CarView: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         
+        var tableView = UITableView()
         
-        
-        
-        private let carImage: UIImageView
+        let data = [["2006"], ["Altima"],["Nissan"],["12Easdjndajsn2"], ["Auto"] ]
+//        var data : [Any] = []
+//        var data : [ String]
+        let headerTitles = ["Year ", "Model", "Make","Vin", "Transmission"]
+//        var someInts = [Int]()
+
         
         init(CarToBeViewed: Car) {
+//            override func viewDidLoad() {
+//                super.viewDidLoad()
             
-            currentCar = CarToBeViewed
-            currentCarName = currentCar.toString()
-            imagePickButton = UIButton()
-            carImage = UIImageView()
             
-            let screenSize: CGSize = UIScreen.main.bounds.size
-            let centerX: CGFloat = screenSize.width / 2
-            let centerY: CGFloat = screenSize.height / 2
-            let topOffset: CGFloat = screenSize.height * 0.10
-            let topLeftTitleOffset: CGFloat = topOffset * 0.1
-            let carConstraints = CGRect(x: 0, y: topOffset, width: screenSize.width, height: screenSize.height-topOffset)
-            let carLabelConstraints = CGSize(width: screenSize.width, height: screenSize.width * (9/16))
+            
+            
+//            data = [[CarToBeViewed.year],[CarToBeViewed.model],[CarToBeViewed.make],[CarToBeViewed.engine],[CarToBeViewed.transmission]]
+            
+            
             
             
             
             super.init(nibName: nil, bundle: nil)
-            //self.view.backgroundColor = UIColor.blue
             
-            // add Picture Button
-            imagePickButton.frame = CGRect(x: centerX - 30 , y: screenSize.height * 0.9, width: 60 , height: 60)
-            imagePickButton.setTitle("addPicture", for: UIControlState.normal)
-            imagePickButton.backgroundColor = UIColor.red;
-            imagePickButton.addTarget(self, action: #selector(CarView.loadImageButtonTapped), for: UIControlEvents.touchUpInside)
-            // addCarScrollView.addSubview(addPicture)
             
-            carImage.frame = CGRect(x: (carConstraints.width * 0.03), y: (carConstraints.width * 0.03), width: carLabelConstraints.width * 0.94, height: carLabelConstraints.height * 0.94)
-            self.view.addSubview(carImage)
-            self.view.addSubview(imagePickButton)
-        }
+            // Do any additional setup after loading the view, typically from a nib.
+            
+            tableView = UITableView(frame: self.view.bounds, style: UITableViewStyle.plain)
+            tableView.dataSource = self
+            tableView.delegate = self
+            tableView.backgroundColor = UIColor.yellow
+            
+            
+            tableView.register(UITableViewCell.self, forCellReuseIdentifier: "my")
+            
+            
+            let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
+            let displayWidth: CGFloat = self.view.frame.width
+            let displayHeight: CGFloat = self.view.frame.height
+            
+            
+            tableView.contentInset.top = 20
+            tableView.frame = CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight - barHeight)
+            let contentSize = self.tableView.contentSize
+            let footer = UIView(frame: CGRect(x: self.tableView.frame.origin.x,y: self.tableView.frame.origin.y + contentSize.height,width: self.tableView.frame.size.width,
+                                              height: self.tableView.frame.height - self.tableView.contentSize.height))
+            
+            self.tableView.tableFooterView = footer
+            
+            
+            self.view.addSubview(tableView)
+        
+    }
         
         required init?(coder aDecoder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
         
-        @objc func loadImageButtonTapped(sender: UIButton) {
-            //if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary) {
-            let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
-            imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
-            imagePicker.allowsEditing = true
-            self.present(imagePicker, animated: true, completion: nil)
-            //}
-        }
         
-        override func viewDidLoad() {
-            super.viewDidLoad()
+        ////////////*************************************////////////////////////////
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "my", for: indexPath)
+            //        cell.textLabel?.text = "This is row \(tableData[indexPath.row])"
+            //        cell.textLabel?.text = "This is row \(data[indexPath.section][indexPath.row])"
             
+//            cell.textLabel?.text = (data[indexPath.section][indexPath.row])
+            //            print("This is row \(data[indexPath.section][indexPath.row])") // this is how its printing
+            return cell
         }
-<<<<<<< HEAD
-=======
         
-        // MARK: - UIImagePickerControllerDelegate Methods
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            //return tableData.count
+            
+            //        print ("This is shit \(data[section])")
+            return (data[section]).count
+        }
         
         
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-            if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-                carImage.contentMode = .scaleToFill
-                carImage.image = pickedImage
-                let currentIndex: Int = currentGarage.findIndex(carToBeFound: currentCar)
-                .valueAt(index: currentIndex).coverPhoto = carImage
+        
+        func numberOfSections(in tableView: UITableView) -> Int {
+            return data.count
+        }
+        
+        func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+            if section < headerTitles.count {
+                return headerTitles[section]
             }
-            self.view.addSubview(carImage)
-            picker.dismiss(animated: true, completion: nil)
+            
+            return nil
         }
         
-        
-        private func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-            dismiss(animated: true, completion: nil)
+        ///************************************************//
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            tableView.deselectRow(at: indexPath, animated: true)
+            let currentCell = tableView.cellForRow(at: indexPath)! as UITableViewCell
+            showDialog(text: (currentCell.textLabel?.text)!)
         }
->>>>>>> 8ad833b96b852fc6dcebab3cbaf2a5fda4608de6
-    }
-    
+        
+        func showDialog(text : String){
+            let alert = UIAlertController(title: "Alert", message: text, preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
 
     
+}
 }
