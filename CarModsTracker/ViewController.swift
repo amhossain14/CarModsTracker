@@ -485,7 +485,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
             positionIndex += 1.0
         }
         print("ScrollView refreshed")
-        
     }
     
     // Done button button Pressed method
@@ -591,7 +590,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         
         private let currentCar: Car
         private let currentCarName: String
+<<<<<<< HEAD
 //        private let currentGarage: linkedList<Car>
+=======
+        //private let currentGarage: linkedList<Car>
+>>>>>>> 8ad833b96b852fc6dcebab3cbaf2a5fda4608de6
         /*
          private let nameLabel: UILabel
          private let engineLabel: UILabel
@@ -654,6 +657,28 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
             super.viewDidLoad()
             
         }
+<<<<<<< HEAD
+=======
+        
+        // MARK: - UIImagePickerControllerDelegate Methods
+        
+        
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+            if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+                carImage.contentMode = .scaleToFill
+                carImage.image = pickedImage
+                let currentIndex: Int = currentGarage.findIndex(carToBeFound: currentCar)
+                .valueAt(index: currentIndex).coverPhoto = carImage
+            }
+            self.view.addSubview(carImage)
+            picker.dismiss(animated: true, completion: nil)
+        }
+        
+        
+        private func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+            dismiss(animated: true, completion: nil)
+        }
+>>>>>>> 8ad833b96b852fc6dcebab3cbaf2a5fda4608de6
     }
     
 
