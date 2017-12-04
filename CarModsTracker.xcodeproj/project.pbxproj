@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0600CE2D1FD523A300D01BFB /* carTrackerIcon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0600CE2C1FD523A300D01BFB /* carTrackerIcon1.png */; };
+		0600CE2F1FD5281200D01BFB /* cartracker.png in Resources */ = {isa = PBXBuildFile; fileRef = 0600CE2E1FD5281100D01BFB /* cartracker.png */; };
+		0600CE321FD53C5300D01BFB /* addbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 0600CE311FD53C5300D01BFB /* addbutton.png */; };
 		06A172891FAE58CA00F35419 /* icon for project in Resources */ = {isa = PBXBuildFile; fileRef = 06A172881FAE58C900F35419 /* icon for project */; };
 		3420E9A61F8706DA00D802A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3420E9A51F8706DA00D802A3 /* AppDelegate.swift */; };
 		3420E9A81F8706DA00D802A3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3420E9A71F8706DA00D802A3 /* ViewController.swift */; };
@@ -20,6 +23,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0600CE2C1FD523A300D01BFB /* carTrackerIcon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = carTrackerIcon1.png; sourceTree = "<group>"; };
+		0600CE2E1FD5281100D01BFB /* cartracker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cartracker.png; sourceTree = "<group>"; };
+		0600CE301FD538EE00D01BFB /* reloadbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reloadbutton.png; sourceTree = "<group>"; };
+		0600CE311FD53C5300D01BFB /* addbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addbutton.png; sourceTree = "<group>"; };
 		06A172881FAE58C900F35419 /* icon for project */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "icon for project"; sourceTree = "<group>"; };
 		3420E9A21F8706DA00D802A3 /* CarModsTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarModsTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3420E9A51F8706DA00D802A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -53,7 +60,9 @@
 				3420E9A41F8706DA00D802A3 /* CarModsTracker */,
 				3420E9A31F8706DA00D802A3 /* Products */,
 				3449B5021FC52AED00FEC3A5 /* 2005acuratl.jpg */,
+				0600CE311FD53C5300D01BFB /* addbutton.png */,
 				3469FDB11FCF6E55009A4B75 /* applogo.png */,
+				0600CE2E1FD5281100D01BFB /* cartracker.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,7 +84,9 @@
 				34BC8FB11FAE37530081C38D /* AddMod.swift */,
 				34BC8FA91FAE36DE0081C38D /* Car.swift */,
 				34BC8FAB1FAE36ED0081C38D /* CarLabel.swift */,
+				0600CE2C1FD523A300D01BFB /* carTrackerIcon1.png */,
 				3420E9AC1F8706DA00D802A3 /* Assets.xcassets */,
+				0600CE301FD538EE00D01BFB /* reloadbutton.png */,
 				06A172881FAE58C900F35419 /* icon for project */,
 				3420E9AE1F8706DA00D802A3 /* LaunchScreen.storyboard */,
 				3420E9B11F8706DA00D802A3 /* Info.plist */,
@@ -144,7 +155,10 @@
 			files = (
 				3420E9B01F8706DA00D802A3 /* LaunchScreen.storyboard in Resources */,
 				3420E9AD1F8706DA00D802A3 /* Assets.xcassets in Resources */,
+				0600CE2D1FD523A300D01BFB /* carTrackerIcon1.png in Resources */,
+				0600CE2F1FD5281200D01BFB /* cartracker.png in Resources */,
 				06A172891FAE58CA00F35419 /* icon for project in Resources */,
+				0600CE321FD53C5300D01BFB /* addbutton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

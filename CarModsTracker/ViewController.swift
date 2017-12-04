@@ -9,6 +9,13 @@
 
 import UIKit
 
+let screenSize = UIScreen.main.bounds.size
+let bottomOffset: CGFloat = screenSize.height * 0.10
+let centerX = screenSize.width / 2
+let centerY = screenSize.height / 2
+let centerXWith10: CGFloat = centerX * 0.01
+let centerYWith10: CGFloat = centerY * 0.01
+
 class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
     
     private var carsIndex: Int
@@ -142,11 +149,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         //        let labelWidth: CGFloat = screenSize.width * 1
         
         // For Center X and Y with 10%
-        let centerXWith10: CGFloat = centerX * 0.01
-        let centerYWith10: CGFloat = centerY * 0.01
+//        let centerXWith10: CGFloat = centerX * 0.01
+//        let centerYWith10: CGFloat = centerY * 0.01
         
         // for buttons position
-        let bottomOffset: CGFloat = screenSize.height * 0.10
+//        let bottomOffset: CGFloat = screenSize.height * 0.10
         
         carScrollView = UIView() // this make sure its full screen
         
@@ -161,7 +168,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         mainScrollView.showsVerticalScrollIndicator = true
         mainScrollView.frame = carConstraints
         mainScrollView.contentSize = CGSize(width: screenSize.width, height: screenSize.height * 2)
-        mainScrollView.backgroundColor = UIColor.lightGray
+//        mainScrollView.backgroundColor = UIColor.white
+        mainScrollView.backgroundColor = UIColor(red:0.19, green:0.52, blue:0.47, alpha:1.0)
         self.view.addSubview(mainScrollView)
         
         // addbutton
@@ -172,7 +180,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         
         //refresh
         refreshButton.frame = CGRect(x: screenSize.width - ((topOffset * 0.5) - 5)*3, y: topOffset * 0.4, width: topOffset * 0.5, height: topOffset * 0.5)
-        refreshButton.setImage(#imageLiteral(resourceName: "refresh.png"), for: UIControlState.normal)
+        refreshButton.setImage(#imageLiteral(resourceName: "reloadbutton"), for: UIControlState.normal)
         refreshButton.addTarget(self, action: #selector(ViewController.refreshButtonPressed), for: UIControlEvents.touchUpInside)
         self.view.addSubview(refreshButton)
         
@@ -180,7 +188,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         // title Label
         appName.text = "Car Mods Tracker"
         appName.font = UIFont.boldSystemFont(ofSize: 20.0)
-        appName.textColor = UIColor.black
+        appName.textColor = UIColor.white
         appName.textAlignment = NSTextAlignment.left
         appName.frame = CGRect(x: topLeftTitleOffset, y: topLeftTitleOffset, width: centerX, height: topOffset)
         self.view.addSubview(appName)
@@ -207,7 +215,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
 //        addCarScrollView.showsVerticalScrollIndicator = true
 //        addCarScrollView.contentSize = CGSize(width: screenSize.width, height: screenSize.height*1.0001)
         carScrollView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
-        carScrollView.backgroundColor = UIColor.red
+//        carScrollView.backgroundColor = UIColor.red
         
         // Label for Year
         labelYear.text = "Year"
@@ -402,7 +410,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         // Done Button
         doneButton.frame = CGRect(x: centerXWith10, y: screenSize.height * 0.9, width: (bottomOffset * 0.5) * 2 , height: bottomOffset * 0.5)
         //        doneButton.setImage(#imageLiteral(resourceName: "addbutton.png"), for: UIControlState.normal)
-        doneButton.backgroundColor = UIColor.blue;
+        doneButton.backgroundColor = UIColor(red:0.11, green:0.43, blue:0.39, alpha:1.0)
         doneButton.setTitle("Done", for: UIControlState.normal)
         doneButton.addTarget(self, action: #selector(ViewController.doneButtonPressed), for: UIControlEvents.touchUpInside)
         carScrollView.addSubview(doneButton)
@@ -410,25 +418,24 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         // add Picture Button
         addPicture.frame = CGRect(x: (bottomOffset * 0.5) * 3.4 + (centerXWith10 ) , y: screenSize.height * 0.9, width: (bottomOffset * 0.5) * 3.5, height: bottomOffset * 0.5)
         addPicture.setTitle("Add Picture", for: UIControlState.normal)
-        addPicture.backgroundColor = UIColor.blue;
+        addPicture.backgroundColor = UIColor(red:0.11, green:0.43, blue:0.39, alpha:1.0)
         addPicture.addTarget(self, action: #selector(ViewController.addPictureButtonPressed), for: UIControlEvents.touchUpInside)
         carScrollView.addSubview(addPicture)
         
         // Cancel Button
         cancelButton.frame = CGRect(x: centerX * 1.6 , y: screenSize.height * 0.9, width: (bottomOffset * 0.5) * 2, height: bottomOffset * 0.5)
         cancelButton.setTitle("Cancel", for: UIControlState.normal)
-        cancelButton.backgroundColor = UIColor.blue;
+        cancelButton.backgroundColor = UIColor(red:0.11, green:0.43, blue:0.39, alpha:1.0)
         cancelButton.addTarget(self, action: #selector(ViewController.cancelButtonPressed), for: UIControlEvents.touchUpInside)
         carScrollView.addSubview(cancelButton)
         
-        
-        
-        
-        carPicture.backgroundColor = UIColor.yellow
+
+        carPicture.backgroundColor = UIColor(red: 0.83984375, green: 0.85546875, blue: 0.84375, alpha: 1.0)
         carPicture.frame = CGRect(x: centerXWith10, y: (centerYWith10*165), width: centerX * 2, height: labelHeight)
         
         carScrollView.addSubview(carPicture)
-        carScrollView.backgroundColor = UIColor.red
+//        carScrollView.backgroundColor = UIColor.red
+       carScrollView.backgroundColor = UIColor(red:0.19, green:0.52, blue:0.47, alpha:1.0)
         //mainScrollView.addSubview(addCarScrollView)
         //mainScrollView.bringSubview(toFront: addCarScrollView)
     }
@@ -453,7 +460,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         let centerYWith10: CGFloat = centerY * 0.01
         
         carPicture = UIImageView()
-        carPicture.backgroundColor = UIColor.yellow
+        carPicture.backgroundColor = UIColor(red: 0.83984375, green: 0.85546875, blue: 0.84375, alpha: 1.0)
         carPicture.frame = CGRect(x: centerXWith10, y: (centerYWith10*165), width: centerX * 2, height: labelHeight)
         
         carScrollView.addSubview(carPicture)
@@ -600,11 +607,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
             imagePicker.allowsEditing = true
             self.present(imagePicker, animated: true, completion: nil)
         }
-        
-        
-        
         print("ADD Picture Button Pressesd ")
-        
     }
     
     
@@ -647,16 +650,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
 
     
     class CarView: UIViewController, UITableViewDelegate, UITableViewDataSource {
- 
-        
-        
+
         let screenSize: CGSize = UIScreen.main.bounds.size
 //        let centerX: CGFloat = screenSize.width / 2
 //        let centerY: CGFloat = screenSize.height / 2
 
         
         
-            let backButton: UIButton
+        let backButton: UIButton
         
         var tableView = UITableView()
         var data: [String]
@@ -672,21 +673,16 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
             data = [CarToBeViewed.year,CarToBeViewed.make,CarToBeViewed.model,CarToBeViewed.engine,CarToBeViewed.transmission,CarToBeViewed.plate,CarToBeViewed.drivetrain,CarToBeViewed.vin]
             
            backButton = UIButton(type: UIButtonType.custom)
-            
-            
+        
             super.init(nibName: nil, bundle: nil)
-            
-           
-            
-            
+
             // Do any additional setup after loading the view, typically from a nib.
             
             tableView = UITableView(frame: self.view.bounds, style: UITableViewStyle.plain)
             tableView.dataSource = self
             tableView.delegate = self
-            tableView.backgroundColor = UIColor.yellow
-            
-            
+            tableView.backgroundColor = UIColor(red:0.49, green:0.74, blue:0.71, alpha:1.0)
+//              tableView.backgroundColor = UIColor(red:0.11, green:0.43, blue:0.39, alpha:1.0)
             tableView.register(UITableViewCell.self, forCellReuseIdentifier: "my")
             
             
@@ -702,21 +698,17 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
                                               height: self.tableView.frame.height - self.tableView.contentSize.height))
             
             self.tableView.tableFooterView = footer
-            
-            
-            
-            backButton.frame = CGRect(x: (screenSize.width / 2) , y: screenSize.height * 0.9, width: (90), height:  90)
+
+            backButton.frame = CGRect(x: centerXWith10, y: screenSize.height * 0.9, width: (bottomOffset * 0.5) * 2 , height: bottomOffset * 0.5)
             backButton.setTitle("Back", for: UIControlState.normal)
-            backButton.backgroundColor = UIColor.blue;
+            backButton.backgroundColor = UIColor(red:0.11, green:0.43, blue:0.39, alpha:1.0)
             backButton.addTarget(self, action: #selector(CarView.backButtonClicked), for: UIControlEvents.touchUpInside)
             self.view.addSubview(backButton)
             
             self.view.addSubview(tableView)
             
         self.view.bringSubview(toFront: backButton)/// bring to the front
-            
-            
-        
+
     }
         
         required init?(coder aDecoder: NSCoder) {
@@ -764,9 +756,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
             //        print ("This is shit \(data[section])")
             return 8
         }
-
-        
-        
         
         func numberOfSections(in tableView: UITableView) -> Int {
             return 1
@@ -788,16 +777,12 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         }
         
         func showDialog(text : String){
-            let alert = UIAlertController(title: "Alert", message: text, preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+            let alert = UIAlertController(title: "Show", message: text, preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Back", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
         
-
     }
-    
-
-
     
 }
 //}
