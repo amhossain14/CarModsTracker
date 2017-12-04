@@ -16,7 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        window?.backgroundColor = UIColor.white
+//        window?.backgroundColor = UIColor.white
+        window?.backgroundColor = UIColor(red:0.19, green:0.52, blue:0.47, alpha:1.0)
         let vc: ViewController = ViewController()
         vc.title = "CarTracker"
         window?.rootViewController = vc // whats the difference
