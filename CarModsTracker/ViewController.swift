@@ -142,7 +142,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         
         let screenSize: CGSize = UIScreen.main.bounds.size
         let centerX: CGFloat = screenSize.width / 2
-        let centerY: CGFloat = screenSize.height / 2
+//        let centerY: CGFloat = screenSize.height / 2
         
         // This height and width are for Textbox and Label height is .05% of the screens
         let labelHeight: CGFloat = screenSize.height * 0.05
@@ -167,7 +167,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         mainScrollView.bounces = true
         mainScrollView.showsVerticalScrollIndicator = true
         mainScrollView.frame = carConstraints
-        mainScrollView.contentSize = CGSize(width: screenSize.width, height: screenSize.height * 2)
+        mainScrollView.contentSize = CGSize(width: screenSize.width, height: screenSize.height)
 //        mainScrollView.backgroundColor = UIColor.white
         mainScrollView.backgroundColor = UIColor(red:0.19, green:0.52, blue:0.47, alpha:1.0)
         self.view.addSubview(mainScrollView)
@@ -234,11 +234,34 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         textYear.placeholder = "Enter Year"
         textYear.backgroundColor = UIColor.white
         textYear.borderStyle = UITextBorderStyle.bezel
-        textYear.keyboardType = UIKeyboardType.default
+        textYear.keyboardType = UIKeyboardType.decimalPad
         textYear.returnKeyType = UIReturnKeyType.done
         textYear.clearButtonMode = UITextFieldViewMode.always
         textYear.delegate = self
         carScrollView.addSubview(textYear)
+        
+        // Label for MAKE
+        labelMake.text = "Make"
+        labelMake.backgroundColor = UIColor.white
+        labelMake.font = UIFont.boldSystemFont(ofSize: 20.0)
+        labelMake.textColor = UIColor.black
+        labelMake.textAlignment = NSTextAlignment.center
+        labelMake.frame = CGRect(x: centerXWith10, y: (centerYWith10*25), width: centerX * 2, height: labelHeight)
+        carScrollView.addSubview(labelMake)
+        
+        // TEXTFIELD for MAKE
+        textMake.frame = CGRect(x: centerXWith10, y: (centerYWith10*35), width: centerX * 2, height: labelHeight)
+        textMake.textColor = UIColor.black
+        textMake.font = UIFont.systemFont(ofSize: 17.0)
+        textMake.textAlignment = NSTextAlignment.center
+        textMake.placeholder = "Enter Make"
+        textMake.backgroundColor = UIColor.white
+        textMake.borderStyle = UITextBorderStyle.bezel
+        textMake.keyboardType = UIKeyboardType.default
+        textMake.returnKeyType = UIReturnKeyType.done
+        textMake.clearButtonMode = UITextFieldViewMode.always
+        textMake.delegate = self
+        carScrollView.addSubview(textMake)
         
         // Label for MODEL
         labelModel.text = "Model"
@@ -246,11 +269,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         labelModel.font = UIFont.boldSystemFont(ofSize: 20.0)
         labelModel.textColor = UIColor.black
         labelModel.textAlignment = NSTextAlignment.center
-        labelModel.frame = CGRect(x: centerXWith10, y: (centerYWith10*25), width: centerX * 2, height: labelHeight)
+        labelModel.frame = CGRect(x: centerXWith10, y: (centerYWith10*45), width: centerX * 2, height: labelHeight)
         carScrollView.addSubview(labelModel)
         
         // TEXTFIELD for MODEL
-        textModel.frame = CGRect(x: centerXWith10, y: (centerYWith10*35), width: centerX * 2, height: labelHeight)
+        textModel.frame = CGRect(x: centerXWith10, y: (centerYWith10*55), width: centerX * 2, height: labelHeight)
         textModel.textColor = UIColor.black
         textModel.font = UIFont.systemFont(ofSize: 17.0)
         textModel.textAlignment = NSTextAlignment.center
@@ -263,28 +286,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         textModel.delegate = self
         carScrollView.addSubview(textModel)
         
-        // Label for MAKE
-        labelMake.text = "Make"
-        labelMake.backgroundColor = UIColor.white
-        labelMake.font = UIFont.boldSystemFont(ofSize: 20.0)
-        labelMake.textColor = UIColor.black
-        labelMake.textAlignment = NSTextAlignment.center
-        labelMake.frame = CGRect(x: centerXWith10, y: (centerYWith10*45), width: centerX * 2, height: labelHeight)
-        carScrollView.addSubview(labelMake)
-        
-        // TEXTFIELD for MAKE
-        textMake.frame = CGRect(x: centerXWith10, y: (centerYWith10*55), width: centerX * 2, height: labelHeight)
-        textMake.textColor = UIColor.black
-        textMake.font = UIFont.systemFont(ofSize: 17.0)
-        textMake.textAlignment = NSTextAlignment.center
-        textMake.placeholder = "Enter Make"
-        textMake.backgroundColor = UIColor.white
-        textMake.borderStyle = UITextBorderStyle.bezel
-        textMake.keyboardType = UIKeyboardType.default
-        textMake.returnKeyType = UIReturnKeyType.done
-        textMake.clearButtonMode = UITextFieldViewMode.always
-        textMake.delegate = self
-        carScrollView.addSubview(textMake)
         
         //labelVin
         labelVin.text = "VIN"
@@ -468,6 +469,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         print("DONE Button Pressed")
         
         self.view.addSubview(carScrollView)
+        
     }
     
     @objc func refreshButtonPressed() {
@@ -555,6 +557,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
     
     // Done button button Pressed method
     @objc func doneButtonPressed() {
+
         let year :String =  textYear.text!
         let make : String = textMake.text!
         let model : String = textModel.text!
@@ -583,18 +586,34 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         garage.append(value: newCar)
 
         carsIndex+=1
+
         
-        self.carScrollView.removeFromSuperview()
+ 
+        
+self.clearssss()
+        
+        
+
+        
+
+
+    self.carScrollView.removeFromSuperview()
+        
     }
-    
+
     // Cancel button button Pressed method
     @objc func cancelButtonPressed() {
         
         print("CANCEL ButtonPressed")
-        let vc: ViewController = ViewController()
-        self.present(vc, animated: true) { () -> Void in
-            NSLog("Back to main Screen VC")
-        }
+        
+//        let vc: ViewController = ViewController()
+//        self.present(vc, animated: true) { () -> Void in
+//            NSLog("Back to main Screen VC")
+//        }
+//        self.presentingViewController?.dismiss(animated: true, completion: { () -> Void in
+//    })
+self.carScrollView.removeFromSuperview()
+        
     }
     
     // Add picture button button Pressed method
@@ -610,7 +629,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         print("ADD Picture Button Pressesd ")
     }
     
-    
     // this is a TEST
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -623,31 +641,42 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
     
     
     
+    
     // this Func is for Textfield
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print("TEXT field for ")// textYear
-        if textYear == textField {
-            //            textVin.text = textYear.text
-            if textYear.text == "Hide" {
-                textYear.resignFirstResponder()   // hide keyboard
-                textYear.isHidden = true          // hide textfield
-                
-                // or remove it from subview
-            }
-        }
-        // this textModel
-        if textModel == textField {
-            //            textPlate.text = textModel.text
-            if textModel.text == "Hide" {
-                textModel.resignFirstResponder()   // hide keyboard
-                textModel.isHidden = true          // hide textfield
-                
-                // or remove it from subview
-            }
-        }
-        return true
+   func clearssss (){
+ 
+    
+    textYear.text = ""
+    textModel.text = ""
+    textMake.text = ""
+    textVin.text = ""
+    textTransmission.text = ""
+    textPlate.text = ""
+    textengine.text = ""
+    textDrivetrain.text = ""
+    
+    textModel.placeholder = "Enter Model"
+    textYear.placeholder = "Enter Year"
+    textMake.placeholder = "Enter Make"
+    textVin.placeholder = "Enter Vin"
+    textTransmission.placeholder = "Enter Transmission"
+    textPlate.placeholder = "Enter Plate"
+    textengine.placeholder = "Enter Engine"
+    textDrivetrain.placeholder = "Enter Drivetrain"
+    
+    }
+    
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     
     class CarView: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -669,7 +698,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         
         init(CarToBeViewed: Car) {
         
-            headerTitles = ["Selected Car"]
+            headerTitles = ["Selected Car Details"]
             data = [CarToBeViewed.year,CarToBeViewed.make,CarToBeViewed.model,CarToBeViewed.engine,CarToBeViewed.transmission,CarToBeViewed.plate,CarToBeViewed.drivetrain,CarToBeViewed.vin]
             
            backButton = UIButton(type: UIButtonType.custom)
@@ -715,10 +744,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
             fatalError("init(coder:) has not been implemented")
         }
         
-        
-        
 
-        
         @objc func backButtonClicked() {
             
             print("BACK Button Pressed")
